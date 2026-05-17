@@ -1,0 +1,1226 @@
+/* --------------------------------------------------------------------------
+   1. IMPORTS & FONTS
+   ---------------------------------------------------------------------------*/
+
+@import "tailwindcss";
+
+/* Spectral — brand serif, hosted locally — used for display & editorial moments.
+   The full weight + italic ladder ships with the design system. */
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral-ExtraLight.ttf') format('truetype');
+  font-weight: 200; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral-ExtraLightItalic.ttf') format('truetype');
+  font-weight: 200; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral-Light.ttf') format('truetype');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral-LightItalic.ttf') format('truetype');
+  font-weight: 300; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral-Regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral-Italic.ttf') format('truetype');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral-Medium.ttf') format('truetype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral-MediumItalic.ttf') format('truetype');
+  font-weight: 500; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral-SemiBold.ttf') format('truetype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral-Bold.ttf') format('truetype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral-BoldItalic.ttf') format('truetype');
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral-ExtraBold.ttf') format('truetype');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: 800; font-style: italic; font-display: swap;
+}
+
+/* --------------------------------------------------------------------------
+   1.5 @property - ANIMATED CUSTOM PROPERTIES
+   Registers typed custom properties for css animation interpolation.
+   Must live at top-level (not inside @theme or @layer).
+  -------------------------------------------------------------------------- */
+
+@property --reveal-pos {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: -20%; /* ~ `from` f keyframe */
+}
+
+/* --------------------------------------------------------------------------
+   2. @theme DESIGN TOKENS
+   --color-*, --font-*, --radius-*, --shadow-*, --ease-*, --animation-*,
+   --duration-* -> design token values
+   --color-xx-yyy-* -> "xx-yyy-*" class names
+   -------------------------------------------------------------------------- */
+
+@theme {
+  /* Surfaces — page → input. Get lighter as they get more interactive. */
+  --color-bg-page:          #1A1A1A; /* App / page background */
+  --color-bg-card:          #222222; /* Cards, panels, modals */
+  --color-bg-input:         #2A2A2A; /* Inputs, tables, code blocks */
+  --color-bg-elevated:      #303030; /* Hover surfaces on cards */
+
+  /* Borders & dividers */
+  --color-border-default:   #383838;
+  --color-border-strong:    #4A4A4A;
+  --color-border-subtle:    #2E2E2E;
+
+  /* Foreground / text */
+  --color-fg-1:             #F0EBE0; /* Display + H1/H2 — warm cream */
+  --color-fg-2:             #C4C4C4; /* Body */
+  --color-fg-3:             #7A7A7A; /* Secondary / metadata */
+  --color-fg-disabled:      #555555;
+  --color-fg-on-gold:       #1A1A1A; /* Text on gold surfaces */
+
+  /* Gold — the single brand accent */
+  --color-gold:             #C9A84C; /* Primary — CTAs, accents, links */
+  --color-gold-light:       #E8C96A; /* Hover */
+  --color-gold-dark:        #8B6F2E; /* Active / pressed */
+  --color-gold-tint-10:     rgba(201, 168, 76, 0.10);
+  --color-gold-tint-20:     rgba(201, 168, 76, 0.20);
+  --color-gold-tint-40:     rgba(201, 168, 76, 0.40);
+
+  /* Semantic states */
+  --color-success:          #1A6B3C;
+  --color-success-fg:       #5BCB8A;
+  --color-warning:          #7A3A00;
+  --color-warning-fg:       #E0A050;
+  --color-error:            #7A1A1A;
+  --color-error-fg:         #E07070;
+  --color-info:             #1A3A6B;
+  --color-info-fg:          #6FA4E0;
+
+  /* Fonts */
+  --font-sans:        var(--font-geist-sans), -apple-system, system-ui, sans-serif;
+  --font-serif:       'Spectral', 'Times New Roman', Georgia, serif;
+  --font-mono:        var(--font-geist-mono), 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Radius */
+  --radius-xs:  4px;
+  --radius-sm:  6px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+  --radius-2xl: 24px;
+  --radius-pill: 9999px;
+
+  /* Duration */
+  --transition-duration-fast:     150ms;
+  --transition-duration-base:     300ms;
+  --transition-duration-slow:     500ms;
+  --transition-duration-slower:   1000ms;
+
+  /* Easing */
+  --ease-out:         cubic-bezier(0,    0,    0.58, 1);
+  --ease-out-smooth:  cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out:      cubic-bezier(0.42, 0,    0.58, 1);
+  --ease-spring:      cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  --animate-fade-in: fadeIn var(--transition-duration-base) var(--ease-out) 0s both;
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(1rem); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  --animate-fade-in-up: fadeInUp var(--transition-duration-slow) var(--ease-out) 0s both;
+  
+  @keyframes dotDrift {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(28px, 28px, 0); }
+  }
+  --animate-dot-drift: dotDrift 24000ms linear 0s infinite;
+  
+  @keyframes breathe {
+    0%, 100% { transform: translate(-50%, -50%) scale(0.70); opacity: 0.75; }
+    50%      { transform: translate(-50%, -50%) scale(0.90); opacity: 1; }
+  }
+  --animate-breathe: breathe 6000ms var(--ease-in-out) 0s infinite;
+
+  @keyframes shootingStar {
+    0%   { transform: rotate(-18deg) translateX(-100%);     opacity: 0; }
+    10%  { opacity: 1; }
+    85%  { opacity: 1; }
+    100% { transform: rotate(-18deg) translateX(100vw); opacity: 0; }
+  }
+  --animate-shooting-star: shootingStar 1000ms var(--ease-out-smooth) 0ms forwards;
+  
+ @keyframes revealLTR {
+    from { opacity: 0; --reveal-pos: -20%; }
+    to   { opacity: 1; --reveal-pos: 110%; }
+  }
+  --animate-reveal-ltr: revealLTR 1000ms var(--ease-in-out) 0s both;
+
+  @keyframes pulseRing {
+    0%   { transform: scale(1);   opacity: 0.7; }
+    100% { transform: scale(2.5); opacity: 0;   }
+  }
+  --animate-pulse-ring: pulseRing 1500ms var(--ease-out) 0s infinite;
+}
+
+/* --------------------------------------------------------------------------
+   3. :root COMPLEXES VALUES - not supported in theme
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Line heights */
+  --lh-tight:         1.1;
+  --lh-snug:          1.3;
+  --lh-normal:        1.6;
+  --lh-loose:         1.75;
+
+  /* Letter spacing */
+  --ls-tightest:      -0.03em;
+  --ls-tighter:       -0.02em;
+  --ls-tight:         -0.01em;
+  --ls-normal:        0;
+  --ls-wide:          0.05em;  /* uppercase eyebrows */
+  --ls-wider:         0.08em;
+  --ls-widest:        0.16em;  /* tracked-out micro labels */
+
+  /* fonts size */
+  --fs-display:       clamp(3rem, 8vw, 6rem);     /* 48–96px — hero titles */
+  --fs-h1:            clamp(2.25rem, 5vw, 4.5rem);/* 36–56px */
+  --fs-h2:            clamp(1.75rem, 3.5vw, 3.5rem);
+  --fs-h3:            1.5rem;   /* 24px */
+  --fs-h4:            1.25rem;  /* 20px */
+  --fs-body:          clamp(0.875rem, 1vw, 1.125rem); /* 14–18px */
+  --fs-caption:       0.75rem;  /* 12px */
+  --fs-eyebrow:       clamp(0.500rem, 1vw, 0.675rem);
+
+  /* fonts weights */
+  --fw-light:         300;
+  --fw-regular:       400;
+  --fw-medium:        500;
+  --fw-semibold:      600;
+  --fw-bold:          700;
+
+  /* complex shadow */
+  --shadow-sm:   0 1px 2px rgba(0,0,0,0.35);
+  --shadow-md:   0 4px 6px -1px rgba(0,0,0,0.4),
+                 0 2px 4px -2px rgba(0,0,0,0.3);
+  --shadow-lg:   0 10px 15px -3px rgba(0,0,0,0.5),
+                 0 4px 6px -4px rgba(0,0,0,0.3);
+  --shadow-gold: 0 0 0 4px var(--color-gold-tint-20);
+}
+
+/* --------------------------------------------------------------------------
+   4. @layer base - RESETS & BASE
+   -------------------------------------------------------------------------- */
+
+@layer base {
+
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    background-color: var(--color-bg-page);
+    color: var(--color-fg-2);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+}
+
+/* --------------------------------------------------------------------------
+   5. @layer COMPONENTS
+   -------------------------------------------------------------------------- */
+
+@layer components {
+
+  /* === utils === */
+
+  /* === reveal animation — single source of truth ===
+     Semantic section classes are listed here directly so they animate
+     without requiring ao-animate in the JSX.
+     Use ao-animate + style={{ '--ao-delay': '…' }} for one-off elements. */
+
+  .ao-animate,
+  .section-eyebrow,
+  .section-title,
+  .section-intro {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition:
+      opacity
+        var(--transition-duration-slower)
+        var(--ease-out-smooth)
+        var(--ao-delay, 0ms),
+      transform
+        var(--transition-duration-slower)
+        var(--ease-out-smooth)
+        var(--ao-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  section.is-visible :is(
+    .ao-animate, .section-eyebrow, .section-title, .section-intro
+  ) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Per-class delays — replaces the dead transition-delay declarations */
+  .section-eyebrow { --ao-delay: 400ms; }
+  .section-title   { --ao-delay: 600ms; }
+  .section-intro   { --ao-delay: 800ms; }
+
+  /* === page === */
+
+  .page-title {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .page-subtitle {
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+  
+  /* === section === */
+  
+  .section {
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 1rem;
+    position: relative;
+    overflow: clip;
+  }
+ 
+  .section-container {
+    width: 100%;
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+ 
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0.25rem;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 1.25rem;
+    height: 1.5px;
+    background-color: var(--color-gold);
+    flex-shrink: 0;
+  }
+
+  .section-eyebrow--right {
+    flex-direction: row-reverse;
+    padding-left: 0;
+    padding-right: 0.25rem;
+  }
+ 
+  .section-title {
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .section-subtitle {
+    margin: 0 auto;
+    margin-top: 1.5rem;
+  }
+
+  .section-intro {
+    max-width: 44rem;
+    margin: 0 auto 3.5rem;
+    text-align: center;
+    line-height: var(--lh-loose);
+    color: var(--color-fg-2);
+  }
+
+  /* === section connector === */
+
+  .section-connector {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 5rem;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 2;
+  }
+
+  .section-connector-line {
+    width: 1px;
+    flex: 1;
+    background: linear-gradient(
+      to bottom,
+      var(--color-gold-tint-40),
+      var(--color-gold)
+    );
+    transform: scaleY(0);
+    transform-origin: top;
+    will-change: transform;
+  }
+
+  /* Diamond gem at the tip — pops in with spring after the line draws */
+  .section-connector-gem {
+    position: relative;
+    width: 5px;
+    height: 5px;
+    flex-shrink: 0;
+    background: var(--color-gold);
+    border-radius: 1px;
+    transform: rotate(45deg);
+    opacity: 0;
+    overflow: visible;
+    will-change: opacity;
+  }
+
+  .section-connector-gem-ring {
+    position: absolute;
+    inset: -1px; /* slightly larger than the gem */
+    border-radius: 1px;
+    background-color: var(--color-gold);
+    animation: var(--animate-pulse-ring);
+    pointer-events: none;
+  }
+  
+  /* Accessibility: hide the decorative ring for users who prefer no motion */
+  @media (prefers-reduced-motion: reduce) {
+    .section-connector-gem-ring {
+      display: none;
+    }
+  }
+
+  /* === background === */
+
+  .bg-dots {
+    position: absolute;
+    inset: -80px;
+    pointer-events: none;
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(201, 168, 76, 0.32) 1px,
+      transparent 1.6px
+    );
+    background-size: 28px 28px;
+    mask-image: radial-gradient(
+      ellipse 80% 70% at 50% 50%,
+      #000 35%,
+      rgba(0, 0, 0, 0.6) 60%,
+      transparent 95%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 80% 70% at 50% 50%,
+      #000 35%,
+      rgba(0, 0, 0, 0.6) 60%,
+      transparent 95%
+    );
+    animation: var(--animate-dot-drift);
+    will-change: transform;
+  }
+
+  .bg-dots.bg-dots-fine {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(240, 235, 224, 0.06) 1px,
+      transparent 1.4px
+    );
+    background-size: 14px 14px;
+    animation-duration: 38s;
+    animation-direction: reverse;
+    mask-image: radial-gradient(
+      ellipse 70% 60% at 50% 50%,
+      #000 40%,
+      transparent 90%
+    );
+  }
+
+  /* Subtle dot grid follows into the about section, fading out */
+  .bg-dots-end {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(201, 168, 76, 0.10) 1px,
+      transparent 1.6px
+    );
+    background-size: 28px 28px;
+    mask-image: linear-gradient(
+      180deg,
+      var(--color-bg-page) 0%,
+      #000 25%,
+      transparent 90%
+    );
+    -webkit-mask-image: linear-gradient(
+      180deg,
+      var(--color-bg-page) 0%,
+      #000 25%,
+      transparent 90%
+    );
+  }
+
+  .bg-glow {
+    position: absolute;
+    width: clamp(280px, 85vw, 500px); /* was 400px*/
+    aspect-ratio: 1 / 1;
+    left: 50%;
+    top: 50%;
+    background: radial-gradient(
+      ellipse at center,
+      var(--color-gold-tint-20) 0%,
+      var(--color-gold-tint-40) 40%,
+      transparent 80%
+    );
+    filter: blur(50px);
+    animation: var(--animate-breathe);
+    will-change: transform, opacity;
+  }
+
+  .bg-shooting-star {
+     position: absolute;
+     top: calc(40% + 17vw);
+     left: 0;
+     width: 360px;
+     height: 2px;
+     background: linear-gradient(
+       90deg,
+       transparent 0%,
+       rgba(240, 235, 224, 0.0) 30%,
+       rgba(240, 235, 224, 0.45) 70%,
+       var(--color-gold-light) 95%,
+       #fff 100%
+     );
+     border-radius: 99px;
+     transform: rotate(-18deg) translateX(0);
+     filter:
+       drop-shadow(0 0 6px rgba(232, 201, 106, 0.85))
+       drop-shadow(0 0 18px rgba(201, 168, 76, 0.55));
+     opacity: 0;
+     z-index: 3;
+     pointer-events: none;
+     animation: var(--animate-shooting-star);
+     animation-delay: 200ms;
+     will-change: transform, opacity;
+   }
+
+   /* === hero === */
+
+   .hero-stack {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+     gap: 0.2rem;
+   }
+
+   .hero-eyebrow {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     gap: 0.75rem;
+     margin-bottom: 1rem;
+     animation: var(--animate-fade-in-up);
+     animation-delay: 1500ms;
+   }
+
+   .hero-title-logo {
+     /*width: 50%;*/
+     width: clamp(250px, 60%, 600px);
+     height: auto;
+     animation: var(--animate-reveal-ltr);
+     animation-delay: 700ms;
+     mask-image: linear-gradient(
+       to right,
+       black var(--reveal-pos),
+       transparent calc(var(--reveal-pos) + 35%)/*+ xx% for smooth reveal*/
+     );
+     -webkit-mask-image: linear-gradient(
+       to right,
+       black var(--reveal-pos),
+       transparent calc(var(--reveal-pos) + 35%)
+     );
+   }
+
+   .hero-tagline {
+     max-width: 32rem;
+     margin: 0 auto;
+     margin-top: 1rem;
+     animation: var(--animate-fade-in-up);
+     animation-delay: 2000ms;
+   }
+
+   .hero-availability {
+     margin: 0 auto;
+     display: inline-flex;
+     align-items: center;
+     gap: 0.6rem;
+     padding: 0.5rem 1rem;
+     border: 1px solid var(--color-border-default);
+     border-radius: var(--radius-pill);
+     background-color: var(--color-bg-page);
+     backdrop-filter: blur(4px);
+     -webkit-backdrop-filter: blur(4px);
+     animation: var(--animate-fade-in-up);
+     animation-delay: 2500ms;
+   }
+
+  .pulse-point {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: currentColor;
+    flex-shrink: 0;
+  }
+
+  .pulse-point-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-color: currentColor;
+    animation: var(--animate-pulse-ring);
+  }
+
+  .pulse-point-success { color: var(--color-success-fg); }
+  .pulse-point-warning { color: var(--color-warning-fg); }
+  .pulse-point-error   { color: var(--color-error-fg); }
+
+  /* === about === */
+
+  /* Responsive pillars grid — auto 3 cols on desktop, 1 on mobile, no media query */
+  .about-pillars {
+    display: grid;
+    grid-template-columns: 1fr;
+    @media (min-width: 48rem) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    gap: 1.5rem;
+  }
+
+/* ======================== TO REVIEW ================= */
+
+  /* === WhyUs section ===*/
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    @media (min-width: 48rem) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    gap: 1.5rem;
+  }
+
+  /* === plans-grid — 3 colonnes desktop, 1 mobile === */
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 1rem;
+  }
+
+  /* === plan-card === */
+  .plan-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+
+/* CSS individual transform properties — évite le conflit avec scale hover */
+    opacity: 0;
+    translate: 0 1.5rem;
+    scale: 1;
+
+    transition:
+      opacity      700ms var(--ease-out-smooth) var(--stagger, 0ms),
+      translate    700ms var(--ease-out-smooth) var(--stagger, 0ms),
+      border-color 200ms var(--ease-out) 0ms,
+      scale        200ms var(--ease-out) 0ms,
+      background   200ms var(--ease-out) 0ms;
+  }
+
+  section.is-visible .plan-card {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  .plan-card:hover {
+    border-color: var(--color-gold);
+  }
+
+  /* Carte mise en avant — bordure or dès le départ + badge */
+  .plan-card--featured {
+    border: 1.5px solid var(--color-gold);
+  }
+
+  .plan-card--featured:hover {
+    scale: 1.01;
+  }
+  /* Badge flottant "Le plus choisi" */
+  .plan-card-badge-featured {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-gold);
+    color: var(--color-fg-on-gold);
+    font-family: var(--font-sans);
+    font-weight: var(--fw-medium);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: var(--ls-wide);
+    padding: 3px 12px;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+  }
+
+  /* Badge secondaire inline (Accès SaaS) */
+  .plan-card-badge-secondary {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--color-gold-tint-10);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    color: var(--color-gold);
+    font-family: var(--font-sans);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: var(--radius-pill);
+    white-space: nowrap; /* avoid carriage return if too long */
+  }
+
+  /* En-tête de la carte */
+  .plan-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .plan-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    background: var(--color-gold-tint-10);
+    border: 1px solid var(--color-gold-tint-20);
+    border-radius: var(--radius-sm);
+    color: var(--color-gold);
+    flex-shrink: 0;
+  }
+
+  /* Cormorant Garamond → font-serif (Spectral, même rôle sémantique) */
+  .plan-card-name {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-h4);        /* 20px */
+    color: var(--color-fg-1);
+    line-height: var(--lh-snug);
+  }
+  .plan-card-target {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-style: italic;
+    color: var(--color-fg-3);
+  }
+
+  .plan-card-price {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-semibold);
+    font-size: 1.75rem;             /* ~28px */
+    color: var(--color-gold);
+    line-height: 1;
+  }
+
+  .plan-card-price-note {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--color-fg-3);
+    margin-top: 0.2rem;
+  }
+
+  .plan-card-divider {
+    border: none;
+    height: 1px;
+    background: var(--color-border-default);
+  }
+
+  /* Liste de features */
+  .plan-card-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;   /* pousse le délai vers le bas */
+  }
+
+  .plan-card-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: var(--fs-caption);  /* 12px */
+    color: var(--color-fg-2);
+    line-height: var(--lh-normal);
+  }
+
+  /* Feature option (dimmed + italic) */
+  .plan-card-feature--option {
+    color: var(--color-fg-3);
+    font-style: italic;
+  }
+
+    /* Icône check — rond vert avec ✓ */
+  .plan-card-check {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    background: var(--color-success);
+    border-radius: 50%;
+    color: #fff;
+
+    /* ✓ en CSS — évite un SVG supplémentaire */
+    &::after {
+      content: '✓';
+      font-size: 8px;
+      line-height: 1;
+    }
+  }
+
+  /* Check option — gold semi-transparent */
+  .plan-card-check--option {
+    background: var(--color-gold-tint-20);
+    border: 1px solid var(--color-gold-tint-40);
+
+    &::after {
+      color: var(--color-gold);
+    }
+  }
+
+  /* Préfixe "à partir de" — étiquette mini au-dessus du prix */
+  .plan-card-price-from {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    color: var(--color-fg-3);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-wide);
+    margin-bottom: 0.15rem;
+  }
+
+  /* Feature exclue du plan — texte très atténué */
+  .plan-card-feature--excluded {
+    color: var(--color-fg-disabled);
+  }
+
+  /* Icône ✕ pour les features exclues — pas de cercle, juste le symbole */
+  .plan-card-cross {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    color: var(--color-fg-disabled);
+
+    &::after {
+      content: '✕';
+      font-size: 9px;
+      line-height: 1;
+    }
+  }
+
+  /* Prix delta d'une option — distingué du libellé grisé/italique */
+  .plan-card-option-price {
+    color: var(--color-gold);
+    font-weight: var(--fw-medium);
+    font-style: normal;   /* annule l'italic hérité de --option */
+  }
+
+  /* Délai de livraison */
+  .plan-card-delay {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--color-fg-3);
+  }
+
+  .plan-card-delay-dot {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    background: var(--color-gold-dark);
+    border-radius: 50%;
+  }
+    /* Note de réactivité (PricingMaintenance) */
+  .pricing-reactivity-note {
+    margin-top: 1.25rem;
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: var(--fs-caption);
+    font-style: italic;
+    color: var(--color-fg-3);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+    padding: 0.75rem 1rem;
+    background: var(--color-bg-input);
+  }
+
+/* ======================== TO REVIEW ================= */
+
+
+  /* === Card === */
+
+  .accent-card:nth-child(1) { --stagger-index: 0; }
+  .accent-card:nth-child(2) { --stagger-index: 1; }
+  .accent-card:nth-child(3) { --stagger-index: 2; }
+  .accent-card:nth-child(4) { --stagger-index: 3; }
+
+  .accent-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-default);
+    /* État initial pour l'animation reveal */
+    opacity: 0;
+    translate: 0 1.5rem;
+    will-change: opacity, translate;
+  }
+
+
+  section.is-visible .accent-card {
+    opacity: 1;
+    translate: 0 0;
+  }
+  
+  .accent-card-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-gold-tint-10);
+    border: 1px solid var(--color-gold-tint-20);
+    border-radius: var(--radius-sm);
+    color: var(--color-gold);
+    flex-shrink: 0;
+  }
+
+  /* --- Variante top --- */
+  .accent-card--top {
+    border-top: 2px solid var(--color-gold-tint-20);
+    transition:
+      opacity
+        700ms
+        var(--ease-out-smooth)
+        calc(1000ms + var(--stagger-index, 0) * 150ms),
+      translate
+        700ms
+        var(--ease-out-smooth)
+        calc(1000ms + var(--stagger-index, 0) * 150ms),
+      border-top-color 250ms var(--ease-out)        0ms,
+      background       250ms var(--ease-out)        0ms;
+  }
+
+  .accent-card--top:hover {
+    border-top-color: var(--color-gold);
+    background: var(--color-bg-elevated);
+  }
+
+  .accent-card--top .accent-card-icon {
+    align-self: center;
+  }
+
+  .accent-card--top h3 {
+    align-self: center;
+  }
+
+  /* --- Variante left --- */
+  .accent-card--left {
+    border-left: 2px solid var(--color-gold-tint-40);
+    transition:
+      opacity
+        700ms
+        var(--ease-out-smooth)
+        calc(1000ms + var(--stagger-index, 0) * 150ms),
+      translate
+        700ms
+        var(--ease-out-smooth)
+        calc(1000ms + var(--stagger-index, 0) * 150ms),
+      border-left-color 250ms var(--ease-out)        0ms,
+      background        250ms var(--ease-out)        0ms;
+  }
+
+  .accent-card--left:hover {
+    border-left-color: var(--color-gold);
+    background: var(--color-bg-elevated);
+  }
+
+  /* === footer === */
+
+  .footer {
+    position: relative;
+    padding: 3rem 1.5rem 2rem;
+    background: var(--color-bg-page);
+  }
+
+  /*
+   * Gradient gold border — replaces a plain border-top.
+   * Fades in from the sides to give a refined editorial feel,
+   * matching the gold accent language from the hero and about sections.
+   */
+  .footer-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-gold-tint-20) 15%,
+      var(--color-gold-tint-40) 50%,
+      var(--color-gold-tint-20) 85%,
+      transparent 100%
+    );
+  }
+
+  /*
+   * Responsive 3-column grid: brand (wider) + nav + social.
+   * auto-fit collapses to 1 column on small screens — no media query needed.
+   */
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(100%, 14rem), 1fr)
+    );
+    gap: 2.5rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Spectral italic — editorial identity for the brand tagline */
+  .footer-brand-tagline {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--fs-caption);
+    color: var(--color-fg-3);
+    margin-top: 0.5rem;
+    line-height: var(--lh-loose);
+    max-width: 20rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  /* Divider + copyright row */
+  .footer-bottom {
+    text-align: center;
+    gap: 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+}
+
+/* --------------------------------------------------------------------------
+   6. @utility TYPOGRAPHIC CLASSES
+   -------------------------------------------------------------------------- */
+
+@utility t-display {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tighter);
+  color: var(--color-fg-1);
+}
+
+@utility t-h1 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tighter);
+  color: var(--color-fg-1);
+}
+
+@utility t-h2 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tighter);
+  color: var(--color-fg-1);
+}
+
+@utility t-h3 {
+  font-family: var(--font-serif);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  color: var(--color-fg-1);
+}
+
+@utility t-h4 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-snug);
+  color: var(--color-fg-1);
+}
+
+@utility t-eyebrow {
+  font-family: var(--font-serif);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-widest);
+  color: var(--color-gold);
+}
+
+@utility t-body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  color: var(--color-fg-2);
+}
+
+@utility t-caption {
+  font-family: var(--font-serif);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  color: var(--color-fg-3);
+}
+
+@utility t-mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  color: var(--color-fg-2);
+}
+
+@utility t-link {
+  color: var(--color-gold);
+  text-decoration: none;
+  transition: color var(--transition-duration-base) var(--ease-out);
+  &:hover { color: var(--color-gold-light); }
+  &:active { color: var(--color-gold-dark); }
+}
+
+@utility t-accent {
+  color: var(--color-gold);
+}
+
+/* Decorative separator dot */
+@utility t-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-gold);
+  border-radius: 50%;
+  opacity: 1;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   7. ACCESSIBILITY
+   -------------------------------------------------------------------------- */
+
+/* Accessibility: respect system presetup */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

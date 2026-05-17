@@ -1,0 +1,182 @@
+{
+  "nav": {
+    "label": "Navigation",
+    "home": "Accueil",
+    "about": "À propos",
+    "whyUs": "Pourquoi moi",
+    "pricingDev": "Tarifs développement",
+    "pricingMaintenance": "Tarifs maintenance",
+    "contact": "Contactes"
+  },
+  "social": {
+      "label": "Réseaux sociaux",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "instagram": "Instagram",
+      "email": "Email"
+  },
+  "hero": {
+    "eyebrow": ["Ingénieur", "Site web", "SaaS"],
+    "tagline": "Une stack premium pour votre",
+    "taglineAccent": "présence en ligne",
+    "taglineSuffix": "Conçu avec soin, hébergé avec passion.",
+    "logoAlt": "Logo val4oss studio",
+    "availability": {
+      "available": "Disponible maintenant",
+      "busy": "Actuellement occupé",
+      "none": "Indisponible"
+    }
+  },
+  "about": {
+    "eyebrow": "Qui je suis",
+    "title": "Un seul opérateur.",
+    "titleAccent": "Propriété totale.",
+    "intro": "Je conçois et livre des sites vitrine premium et des SaaS sur mesure pour les studios, indépendants et petites équipes qui tiennent à leur image en ligne. Un opérateur, une stack, propriété totale du résultat — sans intermédiaire entre nous.",
+    "pillars": [
+      {
+        "key": "server",
+        "label": "Hébergement long terme",
+        "body": "Une fois votre site en ligne, je reste votre hébergeur : serveur privé EU, sauvegardes automatiques et certificats qui se renouvellent seuls."
+      },
+      {
+        "key": "workspace",
+        "label": "Votre espace dédié",
+        "body": "Chaque client dispose d'un espace privé dans ma plateforme SaaS : tableau blanc, forums, docs partagés — tout pour collaborer à votre rythme."
+      },
+      {
+        "key": "open-source",
+        "label": "Open-source natif",
+        "body": "Je vis dans l'open-source — tout ce que je construis est auditable, exportable et vous appartient."
+      }
+    ]
+  },
+  "whyUs": {
+    "eyebrow": "Pourquoi me choisir",
+    "title": "Ce que tu ne",
+    "titleAccent": "trouveras pas ailleurs",
+    "subtitle": "Activité secondaire, exigence principale.",
+    "cards": [
+      {
+        "icon": "code",
+        "title": "Fait main, ligne par ligne",
+        "desc": "Next.js + Tailwind CSS pur. Zéro WordPress, zéro no-code, génération principal par humain, non IA. Du code propre, sans dette technique."
+      },
+      {
+        "icon": "currency-euro",
+        "title": "Prix honnêtes, qualité premium",
+        "desc": "Activité secondaire = pas de frais d'agence. Tu paies le travail, pas la structure. Lighthouse ≥ 95 garanti."
+      },
+      {
+        "icon": "lock",
+        "title": "Hébergement souverain EU",
+        "desc": "VM hébergée en Europe. Conformité RGPD native. Cloudflare inclus. Tes données restent chez toi."
+      },
+      {
+        "icon": "layout-dashboard",
+        "title": "Un suivi comme nulle part ailleurs",
+        "desc": "Accès à un écosystème SaaS privé : whiteboard, notes de projet, forum, feedback. Tu suis l'avancée en direct."
+      }
+    ]
+  },
+  "pricingDev": {
+    "eyebrow": "Développement",
+    "title": "Création de sites",
+    "titleAccent": "vitrine premium",
+    "subtitle": "Prestation unique",
+    "priceFrom": "à partir de",
+    "plans": {
+      "essentiel": {
+        "name": "Essentiel",
+        "target": "Artisans & indépendants",
+        "priceNote": "tarif unique",
+        "delay": "1 à 2 semaines"
+      },
+      "presence": {
+        "name": "Présence",
+        "target": "TPE & petits commerces",
+        "priceNote": "tarif unique",
+        "featuredLabel": "Le plus choisi",
+        "delay": "2 à 4 semaines"
+      },
+      "signature": {
+        "name": "Signature",
+        "target": "PME & projets ambitieux",
+        "priceNote": "estimé après cadrage",
+        "delay": "4 à 7 semaines"
+      }
+    },
+    "features": {
+      "onepage":      "One-page avec sections (Hero, Services, À propos, Contact)",
+      "domain":       "Nom de domaine géré + renouvellement annuel",
+      "ssl":          "Certificat SSL automatique",
+      "seoBasic":     "SEO de base : balises meta, sitemap, structure sémantique",
+      "googleIndex":  "Indexation Google optimisée (Search Console, robots.txt)",
+      "responsive":   "Design responsive mobile / tablette / desktop",
+      "multipage":    "1 à 3 pages distinctes",
+      "gallery":      "Galerie dynamique synchronisée (Instagram ou autre source)",
+      "seoOptimized": "SEO optimisé : audit, maillage interne, Schema.org",
+      "admin":        "Interface d'administration (textes, images)",
+      "i18n":         "i18n — site multilingue",
+      "themes":       "Système de thèmes clair/sombre",
+      "unlimitedPages": "Pages illimitées",
+      "custom":       "Fonctionnalités sur mesure (agenda, espace membre, catalogue…)",
+      "animations":   "Animations & micro-interactions",
+      "seoAdvanced":  "SEO avancé + Core Web Vitals",
+      "saasAccessDev": "Accès SaaS val4oss pour le suivi de projet"
+    }
+  },
+  "pricingMaintenance": {
+    "eyebrow": "Maintenance",
+    "title": "Des abonnement pour",
+    "titleAccent": "suivi & sérénité",
+    "subtitle": "Indépendant du développement · Résiliable à tout moment",
+    "reactivityNote": "— réponse sous 72h ouvrées, pas en urgence. Qualité de production premium, délais honnêtes.",
+    "reactivityAccent": "Activité secondaire assumée",
+
+    "plans": {
+      "hebergement": {
+        "name": "Hébergement",
+        "target": "La base technique",
+        "priceNote": "par mois"
+      },
+      "serenite": {
+        "name": "Sérénité",
+        "target": "Suivi & corrections",
+        "priceNote": "par mois",
+        "featuredLabel": "Le plus courant"
+      },
+      "premium": {
+        "name": "Premium",
+        "target": "Tranquillité totale",
+        "priceNote": "par mois",
+        "badge": "Accès SaaS inclus"
+      }
+    },
+    "features": {
+      "vmEurope":          "VM hébergée en Europe (souveraineté, RGPD)",
+      "domainAuto":        "Nom de domaine + renouvellement automatique",
+      "https":             "HTTPS / SSL",
+      "cloudflare":        "Cloudflare CDN + protection DDoS",
+      "backups":           "Sauvegardes hebdomadaires",
+      "googleIndexing":    "Maintien indexation Google (Search Console)",
+      "monitoring":        "Monitoring 24/7 (alerte si le site tombe)",
+      "perfTracking":      "Suivi des performances (Core Web Vitals, temps de chargement)",
+      "monthlyDebug":      "Debug mensuel (bugs constatés, hors nouvelles features)",
+      "thirdParty":        "Gestion connexions services tiers (Instagram, Maps, Analytics…)",
+      "supportMessage":    "Support par message — réponse sous 72h ouvrées",
+      "saasUnlimited":     "Accès illimité au SaaS val4oss (whiteboard, forum, notes, feedback)",
+      "hourModifications": "1h de modifications/mois (textes, photos, petits ajouts)",
+      "perfReport":        "Rapport de performance mensuel détaillé",
+      "prioritySupport":   "Priorité de traitement sur les demandes"
+    }
+  },
+  "footer": {
+    "arialabel": "Bas de page du site",
+    "brand": "val4oss studio",
+    "tagline": "Une stack premium pour votre présence en ligne.",
+    "legal": {
+        "copyright": "© {year} val4oss studio. Tous droits réservés.",
+        "madeWith": "Fait avec ❤️par val4oss."
+    }
+  }
+}

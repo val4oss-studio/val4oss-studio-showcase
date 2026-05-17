@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "label": "Navigation",
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "social": {
+      "label": "Social media",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "instagram": "Instagram",
+      "email": "Email"
+  },
+  "hero": {
+    "eyebrow": ["Engineer", "Website", "SaaS"],
+    "tagline": "A premium stack for your",
+    "taglineAccent": "presence online",
+    "taglineSuffix": "Handcrafted, hosted with care.",
+    "logoAlt": "val4oss studio logo",
+    "availability": {
+      "available": "Available now",
+      "busy": "Currently busy",
+      "none": "Not available"
+    }
+  },
+  "about": {
+    "eyebrow": "Who I am",
+    "headline": "One operator.\nFull ownership.",
+    "intro": "I design and ship premium showcase websites and custom SaaS for studios, independents, and small teams who care how their work looks online. One operator, one stack, full ownership of the result — no agency layers between us.",
+    "pillars": [
+      {
+        "key": "server",
+        "label": "Long-term hosting",
+        "body": "Once your site is live, I stay on as your long-term host: a private EU server, with backups, and certificates that renew on their own."
+      },
+      {
+        "key": "workspace",
+        "label": "Your dedicated space",
+        "body": "Every client gets a private workspace in my SaaS platform: whiteboard, forums, shared docs — everything you need to collaborate on your terms."
+      },
+      {
+        "key": "open-source",
+        "label": "Open-source native",
+        "body": "I live in the open-source land — everything I build is auditable, exportable, and yours to keep."
+      }
+    ]
+  },
+  "footer": {
+    "arialabel": "Site footer",
+    "brand": "val4oss studio",
+    "tagline": "A premium stack for your presence online.",
+    "legal": {
+        "copyright": "© {year} val4oss studio. All rights reserved.",
+        "madeWith": "Made with ❤️by val4oss."
+    }
+  }
+}
