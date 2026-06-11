@@ -47,7 +47,7 @@ const baseMetadata = {
   authors: [
     {
       name: 'val4oss',
-      url: 'https://val4oss.com',
+      url: 'https://studio.val4oss.com',
     },
   ],
   creator: 'val4oss',
@@ -99,7 +99,7 @@ export async function generateMetadata({
   const content = siteContent[locale];
 
   return {
-    metadataBase: new URL('https://val4oss.com'),
+    metadataBase: new URL('https://studio.val4oss.com'),
     ...baseMetadata,
     title: content.title,
     description: content.description,
@@ -108,7 +108,7 @@ export async function generateMetadata({
       locale: content.ogLocale,
       title: content.title,
       description: content.description,
-      url: `https://val4oss.com/${locale}`,
+      url: `https://studio.val4oss.com/${locale}`,
       siteName: 'val4oss',
       images: [
         {
@@ -127,10 +127,10 @@ export async function generateMetadata({
       images: ['/val4oss_main_logo.png'],
     },
     alternates: {
-      canonical: `https://val4oss.com/${locale}`,
+      canonical: `https://studio.val4oss.com/${locale}`,
       languages: {
-        en: 'https://val4oss.com/en',
-        fr: 'https://val4oss.com/fr',
+        en: 'https://studio.val4oss.com/en',
+        fr: 'https://studio.val4oss.com/fr',
       },
     },
   };

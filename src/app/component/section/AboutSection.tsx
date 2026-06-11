@@ -32,7 +32,7 @@ export function AboutSection({ id, dict }: AboutSectionClientProps): JSX.Element
 
         <div className="about-pillars">
           {
-            dict.pillars.map((pillar, index) => (
+            dict.pillars.map((pillar) => (
               <AccentCard
                 key={pillar.key}
                 icon={pillar.key}

@@ -25,9 +25,9 @@ export function WhyUsSection({ id, dict }: WhyUsSectionProps) {
 
         <div className="why-grid">
           {
-            dict.cards.map((card, i) => (
+            dict.cards.map((card) => (
               <AccentCard
-                key={card.title}
+                key={card.icon}
                 icon={card.icon}
                 title={card.title}
                 body={card.desc}

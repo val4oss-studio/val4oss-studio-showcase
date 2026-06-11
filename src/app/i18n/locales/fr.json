@@ -1,182 +1,224 @@
 {
   "nav": {
-    "label": "Navigation",
-    "home": "Accueil",
-    "about": "À propos",
-    "whyUs": "Pourquoi moi",
-    "pricingDev": "Tarifs développement",
+    "label":              "Navigation",
+    "home":               "Accueil",
+    "about":              "À propos",
+    "whyUs":              "Pourquoi moi",
+    "portfolio":          "En production",
+    "pricingDev":         "Tarifs développement",
     "pricingMaintenance": "Tarifs maintenance",
-    "contact": "Contactes"
+    "contact":            "Contact"
   },
   "social": {
-      "label": "Réseaux sociaux",
-      "linkedin": "LinkedIn",
-      "github": "GitHub",
+      "label":     "Réseaux sociaux",
+      "linkedIn":  "LinkedIn",
+      "github":    "GitHub",
       "instagram": "Instagram",
-      "email": "Email"
+      "email":     "Email"
   },
   "hero": {
-    "eyebrow": ["Ingénieur", "Site web", "SaaS"],
-    "tagline": "Une stack premium pour votre",
+    "eyebrow":       ["Ingénieur", "Site web", "SaaS"],
+    "tagline":       "Une stack premium pour votre",
     "taglineAccent": "présence en ligne",
     "taglineSuffix": "Conçu avec soin, hébergé avec passion.",
-    "logoAlt": "Logo val4oss studio",
+    "logoAlt":       "Logo val4oss studio",
     "availability": {
       "available": "Disponible maintenant",
-      "busy": "Actuellement occupé",
-      "none": "Indisponible"
+      "busy":      "Actuellement occupé",
+      "none":      "Indisponible"
     }
   },
   "about": {
-    "eyebrow": "Qui je suis",
-    "title": "Un seul opérateur.",
+    "eyebrow":     "Qui je suis",
+    "title":       "Un seul opérateur.",
     "titleAccent": "Propriété totale.",
-    "intro": "Je conçois et livre des sites vitrine premium et des SaaS sur mesure pour les studios, indépendants et petites équipes qui tiennent à leur image en ligne. Un opérateur, une stack, propriété totale du résultat — sans intermédiaire entre nous.",
+    "intro":       "Je conçois et livre des sites vitrine premium et des SaaS sur mesure pour les studios, indépendants et petites équipes qui tiennent à leur image en ligne. Un opérateur, une stack, propriété totale du résultat — sans intermédiaire entre nous.",
     "pillars": [
       {
-        "key": "server",
+        "key":   "server",
         "label": "Hébergement long terme",
-        "body": "Une fois votre site en ligne, je reste votre hébergeur : serveur privé EU, sauvegardes automatiques et certificats qui se renouvellent seuls."
+        "body":  "Une fois votre site en ligne, je reste votre hébergeur : serveur privé EU, sauvegardes automatiques et certificats qui se renouvellent seuls."
       },
       {
-        "key": "workspace",
+        "key":   "workspace",
         "label": "Votre espace dédié",
-        "body": "Chaque client dispose d'un espace privé dans ma plateforme SaaS : tableau blanc, forums, docs partagés — tout pour collaborer à votre rythme."
+        "body":  "Chaque client dispose d'un espace privé dans ma plateforme SaaS : tableau blanc, forums, docs partagés — tout pour collaborer à votre rythme."
       },
       {
-        "key": "open-source",
+        "key":   "open-source",
         "label": "Open-source natif",
-        "body": "Je vis dans l'open-source — tout ce que je construis est auditable, exportable et vous appartient."
+        "body":  "Je vis dans l'open-source — tout ce que je construis est auditable, exportable et vous appartient."
       }
     ]
   },
   "whyUs": {
-    "eyebrow": "Pourquoi me choisir",
-    "title": "Ce que tu ne",
+    "eyebrow":     "Pourquoi me choisir",
+    "title":       "Ce que tu ne",
     "titleAccent": "trouveras pas ailleurs",
-    "subtitle": "Activité secondaire, exigence principale.",
+    "subtitle":    "Fait main, exigence principale.",
     "cards": [
       {
-        "icon": "code",
+        "icon":  "code",
         "title": "Fait main, ligne par ligne",
-        "desc": "Next.js + Tailwind CSS pur. Zéro WordPress, zéro no-code, génération principal par humain, non IA. Du code propre, sans dette technique."
+        "desc":  "Next.js + Tailwind CSS pur. Zéro WordPress, zéro no-code, génération principal par humain. Du code propre, sans dette technique."
       },
       {
-        "icon": "currency-euro",
+        "icon":  "currency-euro",
         "title": "Prix honnêtes, qualité premium",
-        "desc": "Activité secondaire = pas de frais d'agence. Tu paies le travail, pas la structure. Lighthouse ≥ 95 garanti."
+        "desc":  "Pas de frais d'agence. Tu paies le travail, pas la structure. Lighthouse ≥ 90 garanti."
       },
       {
-        "icon": "lock",
+        "icon":  "lock",
         "title": "Hébergement souverain EU",
-        "desc": "VM hébergée en Europe. Conformité RGPD native. Cloudflare inclus. Tes données restent chez toi."
+        "desc":  "Hébergé en Europe, dans environnement de haute sécurité. Conformité RGPD native. Cloudflare inclus. Tes données restent protégées."
       },
       {
-        "icon": "layout-dashboard",
+        "icon":  "layout-dashboard",
         "title": "Un suivi comme nulle part ailleurs",
-        "desc": "Accès à un écosystème SaaS privé : whiteboard, notes de projet, forum, feedback. Tu suis l'avancée en direct."
+        "desc":  "Accès à un écosystème SaaS privé : whiteboard, notes de projet, forum, feedback. Tu suis l'avancée en direct, et tu bénéficies d'un accès privé à des conseils, avis, idées."
       }
     ]
   },
+  "portfolio": {
+    "eyebrow":     "En production",
+    "title":       "Ce que j'ai,",
+    "titleAccent": "livré",
+    "subtitle": "Des projets réels, en ligne — chacun pensé et construit de bout en bout.",
+    "cta": "Voir le site",
+    "projects": {
+      "theboweryst": {
+        "name": "The boweryst",
+        "tagline": "Site vitrine pour studio de tatouage à Lorient"
+      },
+      "example-barber": {
+        "name":    "[WIP] Bardier site vitrine",
+        "tagline": "Application métier sur mesure"
+      },
+      "example-ecom": {
+        "name":    "[WIP] Boutique en ligne",
+        "tagline": "E-commerce produits artisanaux"
+      }
+    }
+  },
+  "pricing": {
+    "badges": {
+      "saasAccess": "Espace client inclus"
+    },
+    "saasNoteAccent": "Espace client val4oss",
+    "saasNote": "— Forum d'échange, tableau blanc partagé, retours structurés et documents collaboratifs : un accès privé pour suivre votre projet de bout en bout, sans passer par email.",
+    "status": {
+        "recommended": "Recommandé",
+        "mostPopular": "Le plus populaire"
+    }
+  },
   "pricingDev": {
-    "eyebrow": "Développement",
-    "title": "Création de sites",
+    "eyebrow":     "Développement",
+    "title":       "Création de sites",
     "titleAccent": "vitrine premium",
-    "subtitle": "Prestation unique",
-    "priceFrom": "à partir de",
+    "subtitle":    "Prestation unique",
+    "priceFrom":   "à partir de",
     "plans": {
       "essentiel": {
-        "name": "Essentiel",
-        "target": "Artisans & indépendants",
-        "priceNote": "tarif unique",
-        "delay": "1 à 2 semaines"
+        "name":          "Essentiel",
+        "target":        "Artisans & indépendants",
+        "priceNote":     "tarif unique",
+        "delay":         "1 à 2 semaines"
       },
       "presence": {
-        "name": "Présence",
-        "target": "TPE & petits commerces",
-        "priceNote": "tarif unique",
-        "featuredLabel": "Le plus choisi",
-        "delay": "2 à 4 semaines"
+        "name":          "Présence",
+        "target":        "TPE & petits commerces",
+        "priceNote":     "tarif unique",
+        "delay":         "2 à 4 semaines"
       },
       "signature": {
-        "name": "Signature",
-        "target": "PME & projets ambitieux",
-        "priceNote": "estimé après cadrage",
-        "delay": "4 à 7 semaines"
+        "name":          "Signature",
+        "target":        "PME & projets ambitieux",
+        "priceNote":     "estimé après cadrage",
+        "delay":         "4 à 7 semaines"
       }
     },
     "features": {
-      "onepage":      "One-page avec sections (Hero, Services, À propos, Contact)",
-      "domain":       "Nom de domaine géré + renouvellement annuel",
-      "ssl":          "Certificat SSL automatique",
-      "seoBasic":     "SEO de base : balises meta, sitemap, structure sémantique",
-      "googleIndex":  "Indexation Google optimisée (Search Console, robots.txt)",
-      "responsive":   "Design responsive mobile / tablette / desktop",
-      "multipage":    "1 à 3 pages distinctes",
-      "gallery":      "Galerie dynamique synchronisée (Instagram ou autre source)",
-      "seoOptimized": "SEO optimisé : audit, maillage interne, Schema.org",
-      "admin":        "Interface d'administration (textes, images)",
-      "i18n":         "i18n — site multilingue",
-      "themes":       "Système de thèmes clair/sombre",
+      "onepage":        "One-page statique avec sections (Hero, Services, À propos, Contact)",
+      "seo":            "SEO : balises meta, sitemap, structure sémantique, audit",
+      "googleIndex":    "Indexation Google optimisée (Search Console, robots.txt)",
+      "responsive":     "Design responsive mobile / tablette / desktop",
+      "multipage":      "1 à 3 pages distinctes",
+      "gallery":        "Galerie dynamique synchronisée (Instagram ou autre source)",
+      "admin":          "Interface d'administration (textes, images)",
+      "i18n":           "i18n — site multilingue",
+      "themes":         "Système de thèmes clair/sombre",
       "unlimitedPages": "Pages illimitées",
-      "custom":       "Fonctionnalités sur mesure (agenda, espace membre, catalogue…)",
-      "animations":   "Animations & micro-interactions",
-      "seoAdvanced":  "SEO avancé + Core Web Vitals",
-      "saasAccessDev": "Accès SaaS val4oss pour le suivi de projet"
+      "custom":         "Fonctionnalités sur mesure (agenda, espace membre, catalogue…)",
+      "animations":     "Animations & micro-interactions"
     }
   },
   "pricingMaintenance": {
-    "eyebrow": "Maintenance",
-    "title": "Des abonnement pour",
-    "titleAccent": "suivi & sérénité",
-    "subtitle": "Indépendant du développement · Résiliable à tout moment",
-    "reactivityNote": "— réponse sous 72h ouvrées, pas en urgence. Qualité de production premium, délais honnêtes.",
+    "eyebrow":          "Maintenance",
+    "title":            "Des abonnements pour",
+    "titleAccent":      "suivi & sérénité",
+    "subtitle":         "Indépendant du développement · Résiliable à tout moment",
+    "reactivityNote":   "— réponse sous 72h ouvrées, pas en urgence. Qualité de production premium, délais honnêtes.",
     "reactivityAccent": "Activité secondaire assumée",
-
     "plans": {
       "hebergement": {
-        "name": "Hébergement",
-        "target": "La base technique",
-        "priceNote": "par mois"
+        "name":          "Hébergement",
+        "target":        "La base technique",
+        "priceNote":     "/ mois"
       },
       "serenite": {
-        "name": "Sérénité",
-        "target": "Suivi & corrections",
-        "priceNote": "par mois",
-        "featuredLabel": "Le plus courant"
+        "name":          "Sérénité",
+        "target":        "Suivi & corrections",
+        "priceNote":     "/ mois"
       },
       "premium": {
-        "name": "Premium",
-        "target": "Tranquillité totale",
-        "priceNote": "par mois",
-        "badge": "Accès SaaS inclus"
+        "name":          "Premium",
+        "target":        "Tranquillité totale",
+        "priceNote":     "/ mois"
       }
     },
     "features": {
-      "vmEurope":          "VM hébergée en Europe (souveraineté, RGPD)",
-      "domainAuto":        "Nom de domaine + renouvellement automatique",
-      "https":             "HTTPS / SSL",
-      "cloudflare":        "Cloudflare CDN + protection DDoS",
-      "backups":           "Sauvegardes hebdomadaires",
-      "googleIndexing":    "Maintien indexation Google (Search Console)",
-      "monitoring":        "Monitoring 24/7 (alerte si le site tombe)",
-      "perfTracking":      "Suivi des performances (Core Web Vitals, temps de chargement)",
-      "monthlyDebug":      "Debug mensuel (bugs constatés, hors nouvelles features)",
-      "thirdParty":        "Gestion connexions services tiers (Instagram, Maps, Analytics…)",
-      "supportMessage":    "Support par message — réponse sous 72h ouvrées",
-      "saasUnlimited":     "Accès illimité au SaaS val4oss (whiteboard, forum, notes, feedback)",
-      "hourModifications": "1h de modifications/mois (textes, photos, petits ajouts)",
-      "perfReport":        "Rapport de performance mensuel détaillé",
-      "prioritySupport":   "Priorité de traitement sur les demandes"
+      "vmEurope":        "Hébergé depuis l'Europe (souveraineté, RGPD)",
+      "domainAuto":      "Nom de domaine + renouvellement automatique",
+      "https":           "HTTPS / SSL",
+      "cloudflare":      "Cloudflare CDN + protection DDoS",
+      "backups":         "Sauvegardes hebdomadaires",
+      "googleIndexing":  "Maintien indexation Google (Search Console)",
+      "monitoring":      "Monitoring 24/7 (alerte si le site tombe)",
+      "perfTracking":    "Suivi des performances (Core Web Vitals, temps de chargement)",
+      "monthlyDebug":    "Debug mensuel (bugs constatés, hors nouvelles features)",
+      "thirdParty":      "Gestion connexions services tiers (Instagram, Maps, Analytics…)",
+      "supportMessage":  "Support par message — réponse sous 72h ouvrées",
+      "modifications":   "Ajustement des features (textes, photos, petits ajouts)",
+      "perfReport":      "Rapport de performance mensuel détaillé",
+      "prioritySupport": "Priorité de traitement sur les demandes"
+    }
+  },
+  "contact": {
+    "eyebrow":     "Prenons contact",
+    "title":       "Parlons de",
+    "titleAccent": "votre projet.",
+    "subtitle":    "Une idée, une question ? Choisissez le canal qui vous convient — je réponds personnellement.",
+    "channels": {
+      "email": {
+        "label": "Email",
+        "desc":  "Pour toute demande de devis ou question détaillée"
+      },
+      "instagram": {
+        "label": "Instagram",
+        "desc":  "Pour un échange informel ou suivre mon actualité"
+      },
+      "matrix": {
+        "label": "Matrix",
+        "desc":  "Pour une discussion technique en temps réel"
+      }
     }
   },
   "footer": {
-    "arialabel": "Bas de page du site",
-    "brand": "val4oss studio",
-    "tagline": "Une stack premium pour votre présence en ligne.",
+    "ariaLabel": "Bas de page du site",
+    "brand":     "val4oss studio",
+    "tagline":   "Une stack premium pour votre présence en ligne.",
     "legal": {
-        "copyright": "© {year} val4oss studio. Tous droits réservés.",
-        "madeWith": "Fait avec ❤️par val4oss."
+        "copyright": "© {year} val4oss studio. Tous droits réservés."
     }
   }
 }

@@ -1,58 +1,224 @@
 {
   "nav": {
-    "label": "Navigation",
-    "home": "Home",
-    "about": "About",
-    "contact": "Contact"
+    "label":              "Navigation",
+    "home":               "Home",
+    "about":              "About",
+    "whyUs":              "Why me",
+    "portfolio":          "Live projects",
+    "pricingDev":         "Dev pricing",
+    "pricingMaintenance": "Maintenance pricing",
+    "contact":            "Contact"
   },
   "social": {
-      "label": "Social media",
-      "linkedin": "LinkedIn",
-      "github": "GitHub",
-      "instagram": "Instagram",
-      "email": "Email"
+    "label":     "Social media",
+    "linkedIn":  "LinkedIn",
+    "github":    "GitHub",
+    "instagram": "Instagram",
+    "email":     "Email"
   },
   "hero": {
-    "eyebrow": ["Engineer", "Website", "SaaS"],
-    "tagline": "A premium stack for your",
+    "eyebrow":       ["Engineer", "Website", "SaaS"],
+    "tagline":       "A premium stack for your",
     "taglineAccent": "presence online",
     "taglineSuffix": "Handcrafted, hosted with care.",
-    "logoAlt": "val4oss studio logo",
+    "logoAlt":       "val4oss studio logo",
     "availability": {
       "available": "Available now",
-      "busy": "Currently busy",
-      "none": "Not available"
+      "busy":      "Currently busy",
+      "none":      "Not available"
     }
   },
   "about": {
-    "eyebrow": "Who I am",
-    "headline": "One operator.\nFull ownership.",
-    "intro": "I design and ship premium showcase websites and custom SaaS for studios, independents, and small teams who care how their work looks online. One operator, one stack, full ownership of the result — no agency layers between us.",
+    "eyebrow":     "Who I am",
+    "title":       "One operator.",
+    "titleAccent": "Full ownership.",
+    "intro":       "I design and ship premium showcase websites and custom SaaS for studios, independents, and small teams who care how their work looks online. One operator, one stack, full ownership of the result — no agency layers between us.",
     "pillars": [
       {
-        "key": "server",
+        "key":   "server",
         "label": "Long-term hosting",
-        "body": "Once your site is live, I stay on as your long-term host: a private EU server, with backups, and certificates that renew on their own."
+        "body":  "Once your site is live, I stay on as your long-term host: a private EU server, automated backups, and certificates that renew on their own."
       },
       {
-        "key": "workspace",
+        "key":   "workspace",
         "label": "Your dedicated space",
-        "body": "Every client gets a private workspace in my SaaS platform: whiteboard, forums, shared docs — everything you need to collaborate on your terms."
+        "body":  "Every client gets a private workspace in my SaaS platform: whiteboard, forums, shared docs — everything you need to collaborate on your terms."
       },
       {
-        "key": "open-source",
+        "key":   "open-source",
         "label": "Open-source native",
-        "body": "I live in the open-source land — everything I build is auditable, exportable, and yours to keep."
+        "body":  "I live in the open-source land — everything I build is auditable, exportable, and yours to keep."
       }
     ]
   },
+  "whyUs": {
+    "eyebrow":     "Why choose me",
+    "title":       "What you won't",
+    "titleAccent": "find elsewhere",
+    "subtitle":    "Handcrafted, uncompromising quality.",
+    "cards": [
+      {
+        "icon":  "code",
+        "title": "Handcrafted, line by line",
+        "desc":  "Pure Next.js + Tailwind CSS. Zero WordPress, zero no-code. Clean code, no technical debt."
+      },
+      {
+        "icon":  "currency-euro",
+        "title": "Fair pricing, premium quality",
+        "desc":  "No agency overhead. You pay for the work, not the structure. Lighthouse ≥ 90 guaranteed."
+      },
+      {
+        "icon":  "lock",
+        "title": "Sovereign EU hosting",
+        "desc":  "Hosted in Europe, in a high-security environment. Native GDPR compliance. Cloudflare included. Your data stays protected."
+      },
+      {
+        "icon":  "layout-dashboard",
+        "title": "Follow-up like nowhere else",
+        "desc":  "Access to a private SaaS ecosystem: whiteboard, project notes, forum, feedback. Track progress live and get private access to advice and ideas."
+      }
+    ]
+  },
+  "portfolio": {
+    "eyebrow":     "Live projects",
+    "title":       "What I've",
+    "titleAccent": "shipped",
+    "subtitle":    "Real projects, online — each thought through and built end to end.",
+    "cta":         "Visit the site",
+    "projects": {
+      "theboweryst": {
+        "name":    "The boweryst",
+        "tagline": "Showcase site for a tattoo studio in Lorient"
+      },
+      "example-barber": {
+        "name":    "[WIP] Barber showcase",
+        "tagline": "Custom business application"
+      },
+      "example-ecom": {
+        "name":    "[WIP] Online shop",
+        "tagline": "E-commerce for artisan products"
+      }
+    }
+  },
+  "pricing": {
+    "badges": {
+      "saasAccess": "Client space included"
+    },
+    "saasNoteAccent": "val4oss client space",
+    "saasNote": "— Exchange forum, shared whiteboard, structured feedback and collaborative documents: private access to follow your project end to end, without going through email.",
+    "status": {
+      "recommended": "Recommended",
+      "mostPopular": "Most popular"
+    }
+  },
+  "pricingDev": {
+    "eyebrow":     "Development",
+    "title":       "Premium showcase",
+    "titleAccent": "websites",
+    "subtitle":    "One-time project",
+    "priceFrom":   "from",
+    "plans": {
+      "essentiel": {
+        "name":      "Essential",
+        "target":    "Artisans & freelancers",
+        "priceNote": "one-time fee",
+        "delay":     "1 to 2 weeks"
+      },
+      "presence": {
+        "name":      "Presence",
+        "target":    "SMEs & small businesses",
+        "priceNote": "one-time fee",
+        "delay":     "2 to 4 weeks"
+      },
+      "signature": {
+        "name":      "Signature",
+        "target":    "Ambitious projects",
+        "priceNote": "estimated after scoping",
+        "delay":     "4 to 7 weeks"
+      }
+    },
+    "features": {
+      "onepage":        "Static one-pager with sections (Hero, Services, About, Contact)",
+      "seo":            "SEO: meta tags, sitemap, semantic structure, audit",
+      "googleIndex":    "Optimised Google indexing (Search Console, robots.txt)",
+      "responsive":     "Responsive design: mobile / tablet / desktop",
+      "multipage":      "1 to 3 distinct pages",
+      "gallery":        "Dynamic synced gallery (Instagram or other source)",
+      "admin":          "Admin interface (text, images)",
+      "i18n":           "i18n — multilingual site",
+      "themes":         "Light/dark theme system",
+      "unlimitedPages": "Unlimited pages",
+      "custom":         "Custom features (booking, member area, catalogue…)",
+      "animations":     "Animations & micro-interactions"
+    }
+  },
+  "pricingMaintenance": {
+    "eyebrow":          "Maintenance",
+    "title":            "Subscriptions for",
+    "titleAccent":      "peace of mind",
+    "subtitle":         "Independent from development · Cancel anytime",
+    "reactivityNote":   "— response within 72 business hours, not emergency. Premium production quality, honest timelines.",
+    "reactivityAccent": "Side-project, no surprises",
+    "plans": {
+      "hebergement": {
+        "name":      "Hosting",
+        "target":    "The technical foundation",
+        "priceNote": "/ month"
+      },
+      "serenite": {
+        "name":      "Serenity",
+        "target":    "Monitoring & fixes",
+        "priceNote": "/ month"
+      },
+      "premium": {
+        "name":      "Premium",
+        "target":    "Total peace of mind",
+        "priceNote": "/ month"
+      }
+    },
+    "features": {
+      "vmEurope":        "Hosted in Europe (sovereignty, GDPR)",
+      "domainAuto":      "Domain name + automatic renewal",
+      "https":           "HTTPS / SSL",
+      "cloudflare":      "Cloudflare CDN + DDoS protection",
+      "backups":         "Weekly backups",
+      "googleIndexing":  "Google indexing upkeep (Search Console)",
+      "monitoring":      "24/7 monitoring (alert if site goes down)",
+      "perfTracking":    "Performance tracking (Core Web Vitals, load time)",
+      "monthlyDebug":    "Monthly debug (reported bugs, no new features)",
+      "thirdParty":      "Third-party service management (Instagram, Maps, Analytics…)",
+      "supportMessage":  "Message support — response within 72 business hours",
+      "modifications":   "Feature adjustments (text, photos, small additions)",
+      "perfReport":      "Detailed monthly performance report",
+      "prioritySupport": "Priority handling on requests"
+    }
+  },
+  "contact": {
+    "eyebrow":     "Get in touch",
+    "title":       "Let's talk about",
+    "titleAccent": "your project.",
+    "subtitle":    "An idea, a question? Choose the channel that suits you — I reply personally.",
+    "channels": {
+      "email": {
+        "label": "Email",
+        "desc":  "For any quote request or detailed question"
+      },
+      "instagram": {
+        "label": "Instagram",
+        "desc":  "For an informal chat or to follow my work"
+      },
+      "matrix": {
+        "label": "Matrix",
+        "desc":  "For a real-time technical discussion"
+      }
+    }
+  },
   "footer": {
-    "arialabel": "Site footer",
-    "brand": "val4oss studio",
-    "tagline": "A premium stack for your presence online.",
+    "ariaLabel": "Site footer",
+    "brand":     "val4oss studio",
+    "tagline":   "A premium stack for your presence online.",
     "legal": {
-        "copyright": "© {year} val4oss studio. All rights reserved.",
-        "madeWith": "Made with ❤️by val4oss."
+      "copyright": "© {year} val4oss studio. All rights reserved."
     }
   }
 }

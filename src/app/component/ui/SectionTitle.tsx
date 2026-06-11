@@ -1,5 +1,7 @@
+import type { JSX, ReactNode } from 'react';
+
 interface SectionTitleProps {
-  children: React.ReactNode  // main title text
+  children: ReactNode  // main title text
   accent?: string            // optional last line in gold — omit for plain title
   className?: string
 }
@@ -8,9 +10,9 @@ export function SectionTitle({
   children,
   accent,
   className = '' 
-}: SectionTitleProps) {
+}: SectionTitleProps): JSX.Element {
   return (
-    <h2 className={`section-title t-h2 ao-animate ${className}`.trim()}>
+    <h2 className={`section-title t-h2 ${className}`.trim()}>
       {children}
       {accent && (
         <>

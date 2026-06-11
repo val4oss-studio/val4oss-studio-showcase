@@ -1,4 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# val4oss-studio - showcase
+
+<div align="center">
+  <a href="https://github.com/val4oss-studio/val4oss-studio-showcase">
+    <img src="public/val4oss_studio_logo_white.png" alt="Logo" width="80" height="80">
+  </a>
+
+  <p align="center">
+    Showcase website for <b>val4oss studio</b>.
+    <br />
+    <a href="https://github.com/val4oss-studio/theboweryst-showcase"><strong>Explore the sources »</strong></a>
+    <br />
+    <br />
+<a href="https://studio.val4oss.com">View the site</a>
+    &middot;
+    <a href="https://github.com/val4oss-studio/val4oss-studio-showcase/issues/new?template=bug-report.md">Report Bug</a>
+    &middot;
+    <a href="https://github.com/val4oss-studio/val4oss-studio-showcase/issues/new?template=feature-request.md">Request Feature</a>
+  </p>
+</div>
+
+
+## Stack
+
+* [![Next.js][nextjs-badge]][nextjs-url]
+* [![tailwind css][tailwind-badge]][tailwind-url]
+* [![typescript][typescript-badge]][typescript-url]
+
+## Features
+
+* ![theme feature][theme-badge]
+* ![i18n feature][language-badge]
 
 ## Getting Started
 
@@ -6,31 +37,18 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[nextjs-badge]: https://img.shields.io/badge/Next.js_16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[nextjs-url]: https://vercel.com/geist/brands#next-js
+[tailwind-badge]: https://img.shields.io/badge/tailwind_css_V4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white
+[tailwind-url]: https://tailwindcss.com/brand
+[typescript-badge]: https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white
+[typescript-url]: https://www.typescriptlang.org/branding
+[theme-badge]: https://img.shields.io/badge/theme-Dark%20Light-blue?style=for-the-badge
+[language-badge]: https://img.shields.io/badge/i18n-Fran%C3%A7ais_English-red?style=for-the-badge
+[instagram-badge]: https://img.shields.io/badge/instagram-synchronisation_posts-FF0069?style=for-the-badge&logo=instagram

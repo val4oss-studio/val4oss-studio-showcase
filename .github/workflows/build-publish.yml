@@ -1,0 +1,69 @@
+name: Build & Publish
+
+on:
+  push:
+    branches: [main, main-next]
+    tags: ['[0-9]*']
+
+jobs:
+  build-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # required for git describe
+          lfs: true
+
+      - name: Compute version
+        id: version
+        run: |
+          IS_TAG=false
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            VERSION="${GITHUB_REF#refs/tags/}"
+            IS_TAG=true
+          else
+            LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+            OFFSET=$(git rev-list "${LAST_TAG}..HEAD" --count)
+            VERSION="${LAST_TAG}-${OFFSET}"
+          fi
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "is_tag=${IS_TAG}" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to ghcr.io
+        if: steps.version.outputs.is_tag == 'true'
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build (branch — no push)
+        if: steps.version.outputs.is_tag == 'false'
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: Containerfile
+          push: false
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build & push (tag)
+        if: steps.version.outputs.is_tag == 'true'
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: Containerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/val4oss-studio:${{ steps.version.outputs.version }}
+            ghcr.io/${{ github.repository_owner }}/val4oss-studio:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Dot, PulsePoint } from '@/app/component/ui';
 import type { Dictionary } from '@/app/i18n/translations';
+import { CURRENT_AVAILABILITY, AVAILABILITY_PULSE } from '@/config/availability';
 
 interface HeroSectionProps {
   id: string;
@@ -48,8 +49,8 @@ export function HeroSection({ id, dict }: HeroSectionProps) {
           </div>
 
           <div className="hero-availability mt-16">
-            <PulsePoint status="success" />
-            <p className="t-mono">{dict.availability.available}</p>
+            <PulsePoint status={AVAILABILITY_PULSE[CURRENT_AVAILABILITY]} />
+            <p className="t-mono">{dict.availability[CURRENT_AVAILABILITY]}</p>
           </div>
         
         </div>

@@ -1,7 +1,7 @@
 import type { JSX } from 'react';
 import { getIcon } from './Icons';
 
-interface AccentCardProps {
+export interface AccentCardProps {
   icon: string;
   title: string;
   body: string;

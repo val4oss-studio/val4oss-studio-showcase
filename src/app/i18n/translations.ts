@@ -12,8 +12,6 @@ interface PlanI18n {
   name: string;
   target: string;
   priceNote: string;
-  featuredLabel?: string;  // "Le plus choisi" / "Most popular"
-  badge?: string;          // "Accès SaaS inclus" / "SaaS access included"
   delay?: string;          // "1 à 2 semaines" — dev plans only
 }
 
@@ -23,6 +21,7 @@ export interface Dictionary {
     home: string;
     about: string;
     whyUs: string;
+    portfolio: string;
     pricingDev: string;
     pricingMaintenance: string;
     contact: string;
@@ -64,6 +63,23 @@ export interface Dictionary {
     subtitle: string;
     cards: WhyCardData[];
   };
+  portfolio: {
+    eyebrow:      string;
+    title:        string;
+    titleAccent?: string;
+    subtitle:     string;
+    cta:          string;
+    projects:     Record<string, {
+      name:    string;
+      tagline: string;
+    }>;
+  };
+  pricing: {
+    badges: Record<string, string>;    // keyed by badge key (e.g. "saasIncluded")
+    saasNoteAccent: string;
+    saasNote: string;
+    status: Record<string, string>;    // keyed by status key (e.g. "recommended")
+  };
   pricingDev: {
     eyebrow: string;
     title: string;
@@ -83,13 +99,22 @@ export interface Dictionary {
     plans: Record<string, PlanI18n>;
     features: Record<string, string>;
   };
+  contact: {
+    eyebrow:      string;
+    title:        string;
+    titleAccent?: string;
+    subtitle:     string;
+    channels: Record<string, {
+      label: string;
+      desc:  string;
+    }>;
+  };
   footer: {
-    arialabel: string;
+    ariaLabel: string;
     brand: string;
     tagline: string;
     legal: {
       copyright: string;
-      madeWith: string;
     };
   };
 }

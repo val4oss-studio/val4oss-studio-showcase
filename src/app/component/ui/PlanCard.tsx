@@ -1,15 +1,6 @@
-import type { JSX } from 'react';
-import { getIcon } from './Icons';
-
-/** Status visuel d'une feature dans un plan donné */
-export type FeatureStatus = 'included' | 'option' | 'excluded';
-
-export interface FeatureItem {
-  key: string;
-  label: string;
-  status: FeatureStatus;
-  priceLabel?: string;  // Affiché uniquement si status === 'option', ex: "+200 €"
-}
+import type { JSX, CSSProperties } from 'react';
+import { type FeatureItem } from '@/config/pricing';
+import { getIcon } from '@/app/component/ui/Icons';
 
 interface PlanCardProps {
   icon: string;
@@ -20,36 +11,34 @@ interface PlanCardProps {
   priceNote: string;      // i18n : "tarif unique" | "par mois"
   features: FeatureItem[];
   delay?: string;
-  featured?: boolean;
-  featuredLabel?: string;
+  status?: string;
   badge?: string;
   stagger?: number;
 }
 
 export function PlanCard({
   icon, name, target, price, priceFrom, priceNote,
-  features, delay,
-  featured = false, featuredLabel, badge,
+  features, delay, status, badge,
   stagger = 0,
 }: PlanCardProps): JSX.Element {
   const Icon = getIcon(icon);
 
   return (
     <article
-      className={`plan-card${featured ? ' plan-card--featured' : ''}`}
-      style={{ '--stagger': `${1000 + stagger * 150}ms` } as React.CSSProperties}
+      className={`plan-card${status ? ' plan-card--featured' : ''}`}
+      style={{ '--stagger': `${1000 + stagger * 150}ms` } as CSSProperties}
     >
 
       {/* Badge "Le plus choisi" — positionné en absolu en haut de la carte */}
-      {featured && featuredLabel && (
-        <span className="plan-card-badge-featured" aria-label={featuredLabel}>
-          {featuredLabel}
+      {status && (
+        <span className="plan-card-badge-featured t-badge t-badge--on-gold">
+          {status}
         </span>
       )}
 
       {/* Badge secondaire inline (ex: "Accès SaaS inclus") */}
       {badge && (
-        <span className="plan-card-badge-secondary">
+        <span className="plan-card-badge-secondary t-badge t-badge--secondary">
           {badge}
         </span>
       )}
