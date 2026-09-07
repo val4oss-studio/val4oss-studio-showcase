@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { JSX } from 'react';
 import type { Dictionary } from '@/app/i18n/translations';
 import { SECTION_IDS, NAV_SECTION_KEYS } from '@/config/sections';
-import { getIcon } from '@/app/component/ui';
+import { Icon } from '@/app/component/ui';
 
 interface FooterProps {
   dictFooter: Dictionary['footer'];
@@ -16,7 +16,6 @@ export function Footer({
 }: FooterProps): JSX.Element {
   const year = new Date().getFullYear();
   const copyright = dictFooter.legal.copyright.replace('{year}', String(year));
-  const Icon = getIcon('github');
 
   return (
     <footer className="footer" role="contentinfo" aria-label={dictFooter.ariaLabel}>
@@ -63,7 +62,8 @@ export function Footer({
                   rel="noopener noreferrer"
                   className="t-link t-caption flex items-center gap-2"
                 >
-                  {Icon && <Icon />}
+                  <Icon name="github"/>
+
                   {dictSocial.github}
                 </a>
               </li>

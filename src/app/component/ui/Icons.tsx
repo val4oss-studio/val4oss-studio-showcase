@@ -277,3 +277,11 @@ const ICON_MAP: Record<IconKey, () => JSX.Element> = {
 export function getIcon(key: string): (() => JSX.Element) | null {
   return ICON_MAP[key as IconKey] ?? null;
 }
+
+/**
+ * Return JSX.Element of a Icon, better to call for React component
+ **/
+export function Icon({ name }: { name: IconKey }): JSX.Element | null {
+  const Svg = ICON_MAP[name];
+  return Svg ? <Svg /> : null;
+}

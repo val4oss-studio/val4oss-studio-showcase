@@ -1,5 +1,5 @@
 import type { JSX } from 'react';
-import { getIcon } from './Icons';
+import { Icon } from './Icons';
 
 export interface AccentCardProps {
   icon: string;
@@ -14,15 +14,12 @@ export function AccentCard({
   body,
   accent,
 }: AccentCardProps): JSX.Element {
-  const Icon = getIcon(icon);
 
   return (
     <article className={`accent-card accent-card--${accent}`}>
-      {Icon && (
-        <div className="accent-card-icon" aria-hidden="true">
-          <Icon />
-        </div>
-      )}
+      <div className="accent-card-icon" aria-hidden="true">
+        <Icon name={icon}/>
+      </div>
       <h3 className="t-h3">
         {title}
       </h3>

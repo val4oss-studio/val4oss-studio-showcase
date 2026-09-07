@@ -2,7 +2,7 @@ import type { JSX } from 'react';
 import type { Dictionary } from '@/app/i18n/translations';
 import { CONTACT_CHANNELS } from '@/config/contact';
 import { RevealSection } from '@/app/component/layout';
-import { SectionTitle, getIcon } from '@/app/component/ui';
+import { SectionTitle, Icon } from '@/app/component/ui';
 
 interface ContactSectionProps {
   id:   string;
@@ -28,7 +28,6 @@ export function ContactSection(
         <div className="about-pillars">
           {CONTACT_CHANNELS.map((channel) => {
             const channelI18n = dict.channels[channel.id];
-            const Icon = getIcon(channel.icon);
             const isExternal = !channel.href.startsWith('mailto:');
 
             return (
@@ -40,11 +39,9 @@ export function ContactSection(
                 className="accent-card accent-card--top"
                 aria-label={`${channelI18n.label} — ${channel.handle}`}
               >
-                {Icon && (
-                  <div className="accent-card-icon" aria-hidden="true">
-                    <Icon />
-                  </div>
-                )}
+                <div className="accent-card-icon" aria-hidden="true">
+                  <Icon name={channel.icon}/>
+                </div>
 
                 <h3 className="t-h3">{channelI18n.label}</h3>
 

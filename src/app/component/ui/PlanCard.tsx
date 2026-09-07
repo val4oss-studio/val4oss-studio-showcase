@@ -1,6 +1,6 @@
 import type { JSX, CSSProperties } from 'react';
 import { type FeatureItem } from '@/config/pricing';
-import { getIcon } from '@/app/component/ui/Icons';
+import { Icon } from '@/app/component/ui/Icons';
 
 interface PlanCardProps {
   icon: string;
@@ -21,7 +21,6 @@ export function PlanCard({
   features, delay, status, badge,
   stagger = 0,
 }: PlanCardProps): JSX.Element {
-  const Icon = getIcon(icon);
 
   return (
     <article
@@ -45,11 +44,11 @@ export function PlanCard({
 
       {/* En-tête : icône + nom + cible */}
       <div className="plan-card-header">
-        {Icon && (
-          <div className="plan-card-icon" aria-hidden="true">
-            <Icon />
-          </div>
-        )}
+        
+        <div className="plan-card-icon" aria-hidden="true">
+          <Icon name={icon} />
+        </div>
+        
         <div>
           <h3 className="plan-card-name">{name}</h3>
           <p className="plan-card-target">{target}</p>
