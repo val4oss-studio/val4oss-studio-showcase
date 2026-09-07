@@ -28,51 +28,44 @@
     "title":       "Un seul opérateur.",
     "titleAccent": "Propriété totale.",
     "intro":       "Je conçois et livre des sites vitrine premium et des SaaS sur mesure pour les studios, indépendants et petites équipes qui tiennent à leur image en ligne. Un opérateur, une stack, propriété totale du résultat — sans intermédiaire entre nous.",
-    "pillars": [
-      {
-        "key":   "server",
+    "pillars": {
+      "hosting": {
         "label": "Hébergement long terme",
         "body":  "Une fois votre site en ligne, je reste votre hébergeur : serveur privé EU, sauvegardes automatiques et certificats qui se renouvellent seuls."
       },
-      {
-        "key":   "workspace",
+      "workspace": {
         "label": "Votre espace dédié",
         "body":  "Chaque client dispose d'un espace privé dans ma plateforme SaaS : tableau blanc, forums, docs partagés — tout pour collaborer à votre rythme."
       },
-      {
-        "key":   "open-source",
+      "openSource": {
         "label": "Open-source natif",
         "body":  "Je vis dans l'open-source — tout ce que je construis est auditable, exportable et vous appartient."
       }
-    ]
+    }
   },
   "whyUs": {
     "eyebrow":     "Pourquoi me choisir",
     "title":       "Ce que tu ne",
     "titleAccent": "trouveras pas ailleurs",
     "subtitle":    "Fait main, exigence principale.",
-    "cards": [
-      {
-        "icon":  "code",
+    "cards": {
+      "craft": {
         "title": "Fait main, ligne par ligne",
         "desc":  "Next.js + Tailwind CSS pur. Zéro WordPress, zéro no-code, génération principal par humain. Du code propre, sans dette technique."
       },
-      {
-        "icon":  "currency-euro",
+      "pricing": {
         "title": "Prix honnêtes, qualité premium",
         "desc":  "Pas de frais d'agence. Tu paies le travail, pas la structure. Lighthouse ≥ 90 garanti."
       },
-      {
-        "icon":  "lock",
+      "sovereignty": {
         "title": "Hébergement souverain EU",
         "desc":  "Hébergé en Europe, dans environnement de haute sécurité. Conformité RGPD native. Cloudflare inclus. Tes données restent protégées."
       },
-      {
-        "icon":  "layout-dashboard",
+      "followUp": {
         "title": "Un suivi comme nulle part ailleurs",
         "desc":  "Accès à un écosystème SaaS privé : whiteboard, notes de projet, forum, feedback. Tu suis l'avancée en direct, et tu bénéficies d'un accès privé à des conseils, avis, idées."
       }
-    ]
+    }
   },
   "portfolio": {
     "eyebrow":     "En production",

@@ -5,6 +5,7 @@ import {
   AccentCard,
   SectionTitle
 } from '@/app/component/ui';
+import { PILLARS } from '@/config/sections';
 
 interface AboutSectionClientProps {
   id: string;
@@ -32,15 +33,18 @@ export function AboutSection({ id, dict }: AboutSectionClientProps): JSX.Element
 
         <div className="about-pillars">
           {
-            dict.pillars.map((pillar) => (
-              <AccentCard
-                key={pillar.key}
-                icon={pillar.key}
-                title={pillar.label}
-                body={pillar.body}
-                accent="top"
-              />
-            ))
+            PILLARS.map((pillar) => {
+              const pillarI18n = dict.pillars[pillar.id];
+              return (
+                <AccentCard
+                  key={pillar.id}
+                  icon={pillar.icon}
+                  title={pillarI18n.label}
+                  body={pillarI18n.body}
+                  accent="top"
+                />
+              );
+            })
           }
         </div>
 

@@ -1,8 +1,9 @@
 import type { JSX } from 'react';
 import { Icon } from './Icons';
+import type { IconKey } from '@/config/icons';
 
 export interface AccentCardProps {
-  icon: string;
+  icon: IconKey;
   title: string;
   body: string;
   accent: 'top' | 'left';

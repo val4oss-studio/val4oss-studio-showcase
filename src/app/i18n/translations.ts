@@ -1,13 +1,6 @@
 import 'server-only';
 import { cache } from 'react';
 import type { Locale } from '@/config/locale';
-
-interface WhyCardData {
-  icon: string;
-  title: string;
-  desc: string;
-}
-
 interface PlanI18n {
   name: string;
   target: string;
@@ -45,8 +38,7 @@ export interface Dictionary {
     title: string;
     titleAccent?: string;
     intro: string;
-    pillars: Array<{
-      key: string;
+    pillars: Record< string, {
       label: string;
       body: string;
     }>;
@@ -56,7 +48,10 @@ export interface Dictionary {
     title: string;
     titleAccent?: string;
     subtitle: string;
-    cards: WhyCardData[];
+    cards: Record<string, {
+      title: string;
+      desc: string;
+    }>;
   };
   portfolio: {
     eyebrow:      string;

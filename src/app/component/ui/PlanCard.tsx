@@ -1,9 +1,10 @@
 import type { JSX, CSSProperties } from 'react';
 import { type FeatureItem } from '@/config/pricing';
 import { Icon } from '@/app/component/ui/Icons';
+import type { IconKey } from '@/config/icons'
 
 interface PlanCardProps {
-  icon: string;
+  icon: IconKey;
   name: string;
   target: string;
   price: string;          // Donnée statique : "490 – 690 €"

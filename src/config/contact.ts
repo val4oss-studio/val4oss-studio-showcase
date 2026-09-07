@@ -1,6 +1,8 @@
+import type { IconKey } from '@/config/icons';
+
 export interface ContactChannel {
   id:     string;
-  icon:   string;   // clé pour getIcon()
+  icon:   IconKey;
   href:   string;   // lien réel (mailto:, https://)
   handle: string;   // adresse visible sur la carte
 }

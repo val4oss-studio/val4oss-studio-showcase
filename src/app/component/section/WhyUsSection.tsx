@@ -4,6 +4,7 @@ import {
   AccentCard,
   SectionTitle
 } from '@/app/component/ui';
+import { WHY_CARDS } from '@/config/sections';
 
 interface WhyUsSectionProps {
   id: string;
@@ -25,15 +26,18 @@ export function WhyUsSection({ id, dict }: WhyUsSectionProps) {
 
         <div className="why-grid">
           {
-            dict.cards.map((card) => (
-              <AccentCard
-                key={card.icon}
-                icon={card.icon}
-                title={card.title}
-                body={card.desc}
-                accent="left"
-              />
-            ))
+            WHY_CARDS.map((card) => {
+              const cardI18n = dict.cards[card.id];
+              return (
+                <AccentCard
+                  key={card.id}
+                  icon={card.icon}
+                  title={cardI18n.title}
+                  body={cardI18n.desc}
+                  accent="left"
+                />
+              );
+            })
           }
         </div>
 

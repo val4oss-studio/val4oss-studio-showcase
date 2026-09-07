@@ -1,12 +1,9 @@
-export const STATUS_KEYS: string[] = [
-  'recommended',
-  'mostPopular',
-] as const;
+import type { IconKey } from '@/config/icons';
+
+export const STATUS_KEYS = ['recommended', 'mostPopular'] as const;
 export type StatusKey = typeof STATUS_KEYS[number];
 
-export const BADGE_KEYS: string[] = [
-  'saasAccess',
-] as const;
+export const BADGE_KEYS = ['saasAccess'] as const;
 export type BadgeKey = typeof BADGE_KEYS[number];
 
 export const DEV_FEATURE_KEYS: string[] = [
@@ -48,7 +45,7 @@ export interface FeatureOption {
 
 export interface PlanStaticConfig {
   id: string;                              // Key used in i18n plans dict
-  icon: string;                            // Key resolved by getIcon()
+  icon: IconKey;
   badgeKey?: BadgeKey;                     // Optional badge
   statusKey?: StatusKey;                   // Optional status key (e.g. "mostPopular")
   price: string;                           // Pre-formatted: "490 – 690 €"

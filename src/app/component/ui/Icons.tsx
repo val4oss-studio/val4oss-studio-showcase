@@ -7,6 +7,7 @@
  */
 
 import type { JSX } from 'react';
+import type { IconKey } from '@/config/icons';
 
 // --- Icon components ---
 
@@ -245,12 +246,6 @@ function GitHubIcon(): JSX.Element {
 
 // --- Resolver ---
 
-type IconKey =
-  | 'server' | 'workspace' | 'open-source'
-  | 'code' | 'currency-euro' | 'lock' | 'layout-dashboard'
-  | 'browser' | 'rocket' | 'star'  | 'shield-check' | 'crown'
-  | 'mail' | 'instagram' | 'matrix'| 'github';
-
 const ICON_MAP: Record<IconKey, () => JSX.Element> = {
   'server':            ServerIcon,
   'workspace':         WorkspaceIcon,
@@ -271,17 +266,9 @@ const ICON_MAP: Record<IconKey, () => JSX.Element> = {
 };
 
 /**
- * Returns the icon component for a given key, or null if unknown.
- * Follows the getPillarIcon() pattern in AboutSectionClient.tsx.
- */
-export function getIcon(key: string): (() => JSX.Element) | null {
-  return ICON_MAP[key as IconKey] ?? null;
-}
-
-/**
  * Return JSX.Element of a Icon, better to call for React component
  **/
-export function Icon({ name }: { name: IconKey }): JSX.Element | null {
+export function Icon({ name }: { name: IconKey }): JSX.Element {
   const Svg = ICON_MAP[name];
-  return Svg ? <Svg /> : null;
+  return <Svg />;
 }

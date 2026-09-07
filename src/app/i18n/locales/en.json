@@ -28,51 +28,44 @@
     "title":       "One operator.",
     "titleAccent": "Full ownership.",
     "intro":       "I design and ship premium showcase websites and custom SaaS for studios, independents, and small teams who care how their work looks online. One operator, one stack, full ownership of the result — no agency layers between us.",
-    "pillars": [
-      {
-        "key":   "server",
+    "pillars": {
+      "hosting": {
         "label": "Long-term hosting",
         "body":  "Once your site is live, I stay on as your long-term host: a private EU server, automated backups, and certificates that renew on their own."
       },
-      {
-        "key":   "workspace",
+      "workspace": {
         "label": "Your dedicated space",
         "body":  "Every client gets a private workspace in my SaaS platform: whiteboard, forums, shared docs — everything you need to collaborate on your terms."
       },
-      {
-        "key":   "open-source",
+      "openSource": {
         "label": "Open-source native",
         "body":  "I live in the open-source land — everything I build is auditable, exportable, and yours to keep."
       }
-    ]
+    }
   },
   "whyUs": {
     "eyebrow":     "Why choose me",
     "title":       "What you won't",
     "titleAccent": "find elsewhere",
     "subtitle":    "Handcrafted, uncompromising quality.",
-    "cards": [
-      {
-        "icon":  "code",
+    "cards": {
+      "craft": {
         "title": "Handcrafted, line by line",
         "desc":  "Pure Next.js + Tailwind CSS. Zero WordPress, zero no-code. Clean code, no technical debt."
       },
-      {
-        "icon":  "currency-euro",
+      "pricing": {
         "title": "Fair pricing, premium quality",
         "desc":  "No agency overhead. You pay for the work, not the structure. Lighthouse ≥ 90 guaranteed."
       },
-      {
-        "icon":  "lock",
+      "sovereignty": {
         "title": "Sovereign EU hosting",
         "desc":  "Hosted in Europe, in a high-security environment. Native GDPR compliance. Cloudflare included. Your data stays protected."
       },
-      {
-        "icon":  "layout-dashboard",
+      "followUp": {
         "title": "Follow-up like nowhere else",
         "desc":  "Access to a private SaaS ecosystem: whiteboard, project notes, forum, feedback. Track progress live and get private access to advice and ideas."
       }
-    ]
+    }
   },
   "portfolio": {
     "eyebrow":     "Live projects",

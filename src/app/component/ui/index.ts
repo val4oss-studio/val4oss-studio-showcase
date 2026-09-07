@@ -1,6 +1,6 @@
 export { AccentCard } from './AccentCard';
 export { Dot } from './Dot';
-export { getIcon, Icon } from './Icons';
+export { Icon } from './Icons';
 export { PlanCard } from './PlanCard';
 export { PlanCarousel } from './PlanCarousel';
 export { ProjectCard } from './ProjectCard';
