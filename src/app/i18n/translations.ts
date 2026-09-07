@@ -112,8 +112,8 @@ export interface Dictionary {
 }
 
 const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
-  en: () => import('./locales/en.json').then((m) => m.default as Dictionary),
-  fr: () => import('./locales/fr.json').then((m) => m.default as Dictionary),
+  en: () => import('./locales/en.json').then((m) => m.default),
+  fr: () => import('./locales/fr.json').then((m) => m.default),
 };
 
 export const getDictionary = cache(

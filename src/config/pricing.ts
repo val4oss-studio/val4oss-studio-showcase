@@ -6,54 +6,35 @@ export type StatusKey = typeof STATUS_KEYS[number];
 export const BADGE_KEYS = ['saasAccess'] as const;
 export type BadgeKey = typeof BADGE_KEYS[number];
 
-export const DEV_FEATURE_KEYS: string[] = [
-  'onepage',
-  'seo',
-  'googleIndex',
-  'responsive',
-  'multipage',
-  'gallery',
-  'admin',
-  'i18n',
-  'themes',
-  'unlimitedPages',
-  'custom',
-  'animations',
-];
+export const DEV_FEATURE_KEYS = [
+  'onepage', 'seo', 'googleIndex', 'responsive', 'multipage', 'gallery',
+  'admin', 'i18n', 'themes', 'unlimitedPages', 'custom', 'animations',
+] as const;
+export type DevFeatureKey = typeof DEV_FEATURE_KEYS[number];
 
-export const MAINTENANCE_FEATURE_KEYS: string[] = [
-  'vmEurope',
-  'domainAuto',
-  'https',
-  'cloudflare',
-  'backups',
-  'googleIndexing',
-  'monitoring',
-  'perfTracking',
-  'monthlyDebug',
-  'thirdParty',
-  'supportMessage',
-  'modifications',
-  'perfReport',
-  'prioritySupport',
-];
+export const MAINTENANCE_FEATURE_KEYS = [
+  'vmEurope', 'domainAuto', 'https', 'cloudflare', 'backups', 'googleIndexing',
+  'monitoring', 'perfTracking', 'monthlyDebug', 'thirdParty', 'supportMessage',
+  'modifications', 'perfReport', 'prioritySupport',
+] as const;
+export type MaintenanceFeatureKey = typeof MAINTENANCE_FEATURE_KEYS[number];
 
-export interface FeatureOption {
-  key: string;
+export interface FeatureOption<K extends string> {
+  key: K;
   priceLabel: string;
 }
 
-export interface PlanStaticConfig {
+export interface PlanStaticConfig<K extends string> {
   id: string;                              // Key used in i18n plans dict
   icon: IconKey;
   badgeKey?: BadgeKey;                     // Optional badge
   statusKey?: StatusKey;                   // Optional status key (e.g. "mostPopular")
   price: string;                           // Pre-formatted: "490 – 690 €"
-  featureKeys: string[];                   // Features included in this plan
-  optionFeatures?: FeatureOption[];        // Optional upgrades with price delta
+  featureKeys: readonly K[];                    // Features included in this plan
+  optionFeatures?: readonly FeatureOption<K>[]; // Optional upgrades with price delta
 }
 
-export const DEV_PLANS: PlanStaticConfig[] = [
+export const DEV_PLANS: PlanStaticConfig<DevFeatureKey>[] = [
   {
     id: 'essentiel',
     icon: 'browser',
@@ -83,7 +64,7 @@ export const DEV_PLANS: PlanStaticConfig[] = [
   },
 ];
 
-export const MAINTENANCE_PLANS: PlanStaticConfig[] = [
+export const MAINTENANCE_PLANS: PlanStaticConfig<MaintenanceFeatureKey>[] = [
   {
     id: 'hebergement',
     icon: 'server',
@@ -128,10 +109,10 @@ export interface FeatureItem {
  * @param planConfig  - Static config of the plan (featureKeys includes + some options)
  * @param featuresDict - Dictionary i18n { key → translate label }
  */
-function buildFeatures(
-  featureKeys: string[],
-  planConfig: PlanStaticConfig,
-  featuresDict: Record<string, string>,
+function buildFeatures<K extends string>(
+  featureKeys: readonly K[],
+  planConfig: PlanStaticConfig<K>,
+  featuresDict: Record<K, string>,
 ): FeatureItem[] {
   return featureKeys.map((key) => {
     const optionFeature = planConfig.optionFeatures?.find((o) => o.key === key);
@@ -148,15 +129,15 @@ function buildFeatures(
 }
 
 export function buildDevFeatures(
-  planConfig: PlanStaticConfig,
-  featuresDict: Record<string, string>,
+  planConfig: PlanStaticConfig<DevFeatureKey>,
+  featuresDict: Record<DevFeatureKey, string>,
 ): FeatureItem[] {
   return buildFeatures(DEV_FEATURE_KEYS, planConfig, featuresDict);
 }
 
 export function buildMaintenanceFeatures(
-  planConfig: PlanStaticConfig,
-  featuresDict: Record<string, string>,
+  planConfig: PlanStaticConfig<MaintenanceFeatureKey>,
+  featuresDict: Record<MaintenanceFeatureKey, string>,
 ): FeatureItem[] {
   return buildFeatures(MAINTENANCE_FEATURE_KEYS, planConfig, featuresDict);
 }
