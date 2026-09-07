@@ -163,15 +163,15 @@ export function buildMaintenanceFeatures(
 
 /**
  * Resolves a plan's badge key to its i18n label, or undefined if no badge
- * @param badgeKey - The badge key from the plan config (e.g. "saasIncluded")
+ * @param badgeKey - The badge key from the plan config (e.g. "saasAccess")
  * @param badgesDict - The i18n dictionary for badges { key → translate label }
  * @returns The translated badge label, or undefined if no valid badge
  */
 export function buildBadge(
-  badgeKey: string | undefined,
+  badgeKey: BadgeKey | undefined,
   badgesDict: Record<string, string>,
 ): string | undefined {
-  if (!badgeKey || !BADGE_KEYS.includes(badgeKey)) return undefined;
+  if (!badgeKey) return undefined;
   return badgesDict[badgeKey];
 }
 
@@ -182,9 +182,9 @@ export function buildBadge(
  * @returns The translated status label, or undefined if no valid status
  */
 export function buildStatus(
-  statusKey: string | undefined,
+  statusKey: StatusKey | undefined,
   statusDict: Record<string, string>,
 ): string | undefined {
-  if (!statusKey || !STATUS_KEYS.includes(statusKey)) return undefined;
+  if (!statusKey) return undefined;
   return statusDict[statusKey];
 }

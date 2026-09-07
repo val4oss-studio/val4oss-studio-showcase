@@ -1,6 +1,8 @@
 import 'server-only';
 import { cache } from 'react';
 import type { Locale } from '@/config/locale';
+import type { StatusKey, BadgeKey } from '@/config/pricing';
+
 interface PlanI18n {
   name: string;
   target: string;
@@ -65,10 +67,10 @@ export interface Dictionary {
     }>;
   };
   pricing: {
-    badges: Record<string, string>;    // keyed by badge key (e.g. "saasIncluded")
+    badges: Record<BadgeKey, string>;    // keyed by badge key (e.g. "saasIncluded")
     saasNoteAccent: string;
     saasNote: string;
-    status: Record<string, string>;    // keyed by status key (e.g. "recommended")
+    status: Record<StatusKey, string>;    // keyed by status key (e.g. "recommended")
   };
   pricingDev: {
     eyebrow: string;
