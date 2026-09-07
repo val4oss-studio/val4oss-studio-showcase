@@ -39,11 +39,6 @@ export interface Dictionary {
     taglineAccent: string;
     taglineSuffix: string;
     logoAlt: string;
-    availability: {
-      available: string;
-      busy: string;
-      none: string;
-    }
   };
   about: {
     eyebrow: string;

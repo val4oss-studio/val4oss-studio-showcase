@@ -21,12 +21,7 @@
     "tagline":       "Une stack premium pour votre",
     "taglineAccent": "présence en ligne",
     "taglineSuffix": "Conçu avec soin, hébergé avec passion.",
-    "logoAlt":       "Logo val4oss studio",
-    "availability": {
-      "available": "Disponible maintenant",
-      "busy":      "Actuellement occupé",
-      "none":      "Indisponible"
-    }
+    "logoAlt":       "Logo val4oss studio"
   },
   "about": {
     "eyebrow":     "Qui je suis",

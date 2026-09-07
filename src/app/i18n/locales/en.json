@@ -21,12 +21,7 @@
     "tagline":       "A premium stack for your",
     "taglineAccent": "presence online",
     "taglineSuffix": "Handcrafted, hosted with care.",
-    "logoAlt":       "val4oss studio logo",
-    "availability": {
-      "available": "Available now",
-      "busy":      "Currently busy",
-      "none":      "Not available"
-    }
+    "logoAlt":       "val4oss studio logo"
   },
   "about": {
     "eyebrow":     "Who I am",

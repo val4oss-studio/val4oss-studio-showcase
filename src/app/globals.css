@@ -643,30 +643,6 @@
      animation-delay: 2500ms;
    }
 
-  .pulse-point {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: currentColor;
-    flex-shrink: 0;
-  }
-
-  .pulse-point-ring {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background-color: currentColor;
-    animation: var(--animate-pulse-ring);
-  }
-
-  .pulse-point-success { color: var(--color-success-fg); }
-  .pulse-point-warning { color: var(--color-warning-fg); }
-  .pulse-point-error   { color: var(--color-error-fg); }
-
   /* === about === */
 
   /* Responsive pillars grid — auto 3 cols on desktop, 1 on mobile, no media query */
