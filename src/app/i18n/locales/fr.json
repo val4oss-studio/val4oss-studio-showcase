@@ -5,8 +5,7 @@
     "about":              "À propos",
     "whyUs":              "Pourquoi moi",
     "portfolio":          "En production",
-    "pricingDev":         "Tarifs développement",
-    "pricingMaintenance": "Tarifs maintenance",
+    "pricing":            "Tarifs",
     "contact":            "Contact"
   },
   "social": {
@@ -78,96 +77,72 @@
     }
   },
   "pricing": {
-    "badges": {
-      "saasAccess": "Espace client inclus"
-    },
-    "saasNoteAccent": "Espace client val4oss",
-    "saasNote": "— Forum d'échange, tableau blanc partagé, retours structurés et documents collaboratifs : un accès privé pour suivre votre projet de bout en bout, sans passer par email.",
+    "eyebrow":         "Tarifs",
+    "title":           "Création et suivi,",
+    "titleAccent":     "dans une seule offre.",
+    "subtitle":        "Un site livré, puis maintenu, hébergé et suivi. Sans engagement de durée.",
+    "priceFrom":       "à partir de",
+    "recurringPrefix": "puis",
+    "recurringSuffix": "/ mois",
     "status": {
-        "recommended": "Recommandé",
-        "mostPopular": "Le plus populaire"
-    }
-  },
-  "pricingDev": {
-    "eyebrow":     "Développement",
-    "title":       "Création de sites",
-    "titleAccent": "vitrine premium",
-    "subtitle":    "Prestation unique",
-    "priceFrom":   "à partir de",
+      "recommended": "Recommandé",
+      "mostPopular": "Le plus populaire"
+    },
+    "saasNote": {
+      "title":    "Espace client",
+      "subtitle": "Inclus dans chaque abonnement.",
+      "body":     "Forum d'échange, tableau blanc partagé, retours structurés et documents collaboratifs, pour suivre votre projet de bout en bout sans passer par email."
+    },
+    "groups": {
+      "development": {
+        "title":    "Développement",
+        "subtitle": "Payé une fois. Le site vous appartient."
+      },
+      "maintenance": {
+        "title":    "Maintenance",
+        "subtitle": "Mensuel, sans engagement de durée."
+      }
+    },
+    "options": {
+      "title":    "Options",
+      "subtitle": "À la carte, sur n'importe quel plan."
+    },
     "plans": {
       "essentiel": {
-        "name":          "Essentiel",
-        "target":        "Artisans & indépendants",
-        "priceNote":     "tarif unique",
-        "delay":         "1 à 2 semaines"
+        "name":   "Essentiel",
+        "target": "Artisans & indépendants"
       },
       "presence": {
-        "name":          "Présence",
-        "target":        "TPE & petits commerces",
-        "priceNote":     "tarif unique",
-        "delay":         "2 à 4 semaines"
+        "name":   "Présence",
+        "target": "TPE & petits commerces"
       },
       "signature": {
-        "name":          "Signature",
-        "target":        "PME & projets ambitieux",
-        "priceNote":     "estimé après cadrage",
-        "delay":         "4 à 7 semaines"
+        "name":   "Signature",
+        "target": "PME & projets ambitieux"
       }
     },
     "features": {
-      "onepage":        "One-page statique avec sections (Hero, Services, À propos, Contact)",
-      "seo":            "SEO : balises meta, sitemap, structure sémantique, audit",
-      "googleIndex":    "Indexation Google optimisée (Search Console, robots.txt)",
-      "responsive":     "Design responsive mobile / tablette / desktop",
-      "multipage":      "1 à 3 pages distinctes",
-      "gallery":        "Galerie dynamique synchronisée (Instagram ou autre source)",
-      "admin":          "Interface d'administration (textes, images)",
-      "i18n":           "i18n — site multilingue",
-      "themes":         "Système de thèmes clair/sombre",
-      "unlimitedPages": "Pages illimitées",
-      "custom":         "Fonctionnalités sur mesure (agenda, espace membre, catalogue…)",
-      "animations":     "Animations & micro-interactions"
-    }
-  },
-  "pricingMaintenance": {
-    "eyebrow":          "Maintenance",
-    "title":            "Des abonnements pour",
-    "titleAccent":      "suivi & sérénité",
-    "subtitle":         "Indépendant du développement · Résiliable à tout moment",
-    "reactivityNote":   "— réponse sous 72h ouvrées, pas en urgence. Qualité de production premium, délais honnêtes.",
-    "reactivityAccent": "Activité secondaire assumée",
-    "plans": {
-      "hebergement": {
-        "name":          "Hébergement",
-        "target":        "La base technique",
-        "priceNote":     "/ mois"
-      },
-      "serenite": {
-        "name":          "Sérénité",
-        "target":        "Suivi & corrections",
-        "priceNote":     "/ mois"
-      },
-      "premium": {
-        "name":          "Premium",
-        "target":        "Tranquillité totale",
-        "priceNote":     "/ mois"
-      }
-    },
-    "features": {
-      "vmEurope":        "Hébergé depuis l'Europe (souveraineté, RGPD)",
+      "onepage":         "One-page statique avec sections (Hero, Services, À propos, Contact)",
+      "seo":             "SEO : balises meta, sitemap, structure sémantique, audit",
+      "googleIndex":     "Indexation Google : mise en place et maintien (Search Console)",
+      "responsive":      "Design responsive mobile / tablette / desktop",
+      "admin":           "Interface d'administration (textes, images)",
+      "unlimitedPages":  "Pages illimitées",
+      "i18n":            "i18n — site multilingue",
+      "themes":          "Système de thèmes clair / sombre",
+      "addonServices":   "Services additionnels (agenda, prise de RDV, forum…)",
+      "vmEurope":        "Hébergement sur serveur européen, isolé et chiffré",
+      "monitoring":      "Monitoring hebdomadaire (contrôle de disponibilité)",
+      "perfTracking":    "Suivi des performances (Core Web Vitals, temps de chargement)",
+      "thirdParty":      "Gestion des connexions tierces (galerie Instagram, Maps, Analytics…)",
+      "monthlyDebug":    "Debug mensuel (bugs constatés, hors nouvelles features)",
+      "modifications":   "Ajout de features illimité",
+      "perfReport":      "Rapport de performance mensuel détaillé",
+      "prioritySupport": "Priorité de traitement sur les demandes",
       "domainAuto":      "Nom de domaine + renouvellement automatique",
       "https":           "HTTPS / SSL",
       "cloudflare":      "Cloudflare CDN + protection DDoS",
-      "backups":         "Sauvegardes hebdomadaires",
-      "googleIndexing":  "Maintien indexation Google (Search Console)",
-      "monitoring":      "Monitoring 24/7 (alerte si le site tombe)",
-      "perfTracking":    "Suivi des performances (Core Web Vitals, temps de chargement)",
-      "monthlyDebug":    "Debug mensuel (bugs constatés, hors nouvelles features)",
-      "thirdParty":      "Gestion connexions services tiers (Instagram, Maps, Analytics…)",
-      "supportMessage":  "Support par message — réponse sous 72h ouvrées",
-      "modifications":   "Ajustement des features (textes, photos, petits ajouts)",
-      "perfReport":      "Rapport de performance mensuel détaillé",
-      "prioritySupport": "Priorité de traitement sur les demandes"
+      "backups":         "Sauvegardes hebdomadaires"
     }
   },
   "contact": {

@@ -2,8 +2,7 @@ import {
   HeroSection,
   AboutSection,
   PortfolioSection,
-  PricingDevSection,
-  PricingMaintenanceSection,
+  PricingSection,
   ContactSection,
 } from '@/app/component/section';
 import { SECTION_IDS } from '@/config/sections';
@@ -24,14 +23,9 @@ export default async function Home({
       <HeroSection  id={SECTION_IDS.home}  dict={dict.hero}  />
       <AboutSection id={SECTION_IDS.about} dict={dict.about} />
       <PortfolioSection id={SECTION_IDS.portfolio} dict={dict.portfolio} />
-      <PricingDevSection 
-        id={SECTION_IDS.pricingDev}
-        dictPricing={dict.pricing}
-        dictDev={dict.pricingDev} />
-      <PricingMaintenanceSection
-        id={SECTION_IDS.pricingMaintenance}
-        dictPricing={dict.pricing}
-        dictMaint={dict.pricingMaintenance}
+      <PricingSection 
+        id={SECTION_IDS.pricing}
+        dict={dict.pricing}
       />
       <ContactSection id={SECTION_IDS.contact} dict={dict.contact} />
     </>

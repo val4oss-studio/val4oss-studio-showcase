@@ -3,5 +3,7 @@ export { Dot } from './Dot';
 export { Icon } from './Icons';
 export { PlanCard } from './PlanCard';
 export { PlanCarousel } from './PlanCarousel';
+export { PlanFeature } from './PlanFeature';
+export { PlanGroupLabel } from './PlanGroupLabel';
 export { ProjectCard } from './ProjectCard';
 export { SectionTitle } from './SectionTitle';

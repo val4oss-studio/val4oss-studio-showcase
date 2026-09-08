@@ -262,7 +262,10 @@
   --size-dot:     0.375rem;  /* 6 px */
   --size-icon-xs: 0.875rem;  /* 14px */
   --size-icon:    2.25rem;   /* 36px */
-  --size-icon-glyph: 1.25rem /* 20px */
+  --size-icon-glyph: 1.25rem; /* 20px */
+
+  /* Largeur de la colonne de libellés de la section Tarifs */
+  --size-plans-label: 11rem;
 }
 
 /* --------------------------------------------------------------------------
@@ -841,15 +844,12 @@
 
   /** === Plans === **/
 
-  /* === plans-grid — 3 colonnes desktop, 1 mobile === */
-  .plans-grid {
-    /*display: none;*/
+  /* === plans-layout — colonne de libellés + 3 plans === */
+  .plans-layout {
     @media (max-width: 59.85rem) {
       position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
       overflow: hidden;
       clip: rect(0, 0, 0, 0);
       white-space: nowrap;
@@ -857,10 +857,24 @@
     }
     @media (min-width: 59.9rem) {
       display: grid;
-      /* grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));*/
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: var(--size-plans-label) repeat(3, 1fr);
+      grid-template-rows: repeat(3, auto);   /* en-tête, dév., maintenance */
       gap: 1rem;
     }
+  }
+
+  /* Réserve la case vide (rangée 1 / colonne 1) : sans elle, la 1re carte
+   s'auto-placerait dans la colonne des libellés. */
+  .plans-layout::before {
+    content: '';
+    grid-area: 1 / 1;
+  }
+
+  /* Placement — appartient au layout, pas au composant */
+  .plans-layout > .plan-group-label {
+    grid-column: 1;
+    grid-row: var(--group-row);
+    align-self: start;
   }
 
   /* === Carousel wrapper — visible mobile, masqué desktop === */
@@ -920,17 +934,124 @@
 
   /* === plan-card === */
 
-  .plan-card {
-    position: relative;
+  .plan-group-label {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;      /* aligné sur le bord des cartes */
+    text-align: right;
+    gap: 0.35rem;
+    padding-top: 0.25rem;
+
+    opacity: 0;
+    translate: 0 1.5rem;
+    transition:
+      opacity   700ms var(--ease-out-smooth) var(--stagger, 0ms),
+      translate 700ms var(--ease-out-smooth) var(--stagger, 0ms);
+  }
+
+  section.is-visible .plan-group-label { opacity: 1; translate: 0 0; }
+
+  .plan-group-label-title {
+    font-family: var(--font-sans);
+    font-size: var(--fs-caption);
+    font-weight: var(--fw-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-wide);
+    color: var(--color-fg-2);
+    line-height: var(--lh-snug);
+  }
+
+  /* Filet or sous le titre de groupe */
+  .plan-group-label-rule {
+    width: 1.5rem;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      var(--color-gold-tint-20) 0%,
+      var(--color-gold) 100%
+    );
+  }
+
+  .plan-group-label-subtitle {
+    font-family: var(--font-sans);
+    font-size: var(--fs-xs);
+    font-style: italic;
+    color: var(--color-fg-3);
+    line-height: var(--lh-normal);
+    text-wrap: balance;
+  }
+
+  /*Only for mobile:*/
+  .plan-card-group-title {
+    font-family: var(--font-sans);
+    font-size: var(--fs-caption);
+    font-weight: var(--fw-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-wide);
+    color: var(--color-gold);
+
+    @media (min-width: 59.9rem) { display: none; }
+  }
+
+  /* Gabarit des rangées sous les plans (options, espace client) : un libellé
+     dans la colonne de gauche, une surface pleine largeur à droite. */
+  .plan-row {
+    margin-top: 1rem;
+    display: grid;
     gap: 1rem;
-    padding: 1.5rem;
+
+    /* Mobile : plus de colonne de gauche, le libellé coiffe le bloc et suit
+       donc son alignement centré plutôt que l'alignement à droite de bureau. */
+    @media (max-width: 59.85rem) {
+      & > .plan-group-label { align-items: center; text-align: center; }
+    }
+
+    @media (min-width: 59.9rem) {
+      /* Colonnes strictement identiques à .plans-layout — pas de padding ni
+         de bordure ici, donc la surface couvre exactement la largeur des
+         trois cartes, et son libellé partage leur bord droit. */
+      grid-template-columns: var(--size-plans-label) 1fr;
+
+      & > .plan-group-label { grid-area: 1 / 1; align-self: start; }
+      & > .plan-surface     { grid-area: 1 / 2; }
+    }
+  }
+
+  /* Dans une rangée basse le libellé coiffe une surface peu haute, pas un
+     groupe de 11 features : on resserre pour ne pas dicter la hauteur. */
+  .plan-row > .plan-group-label {
+    gap: 0.15rem;
+  }
+
+  /* Surface de l'espace client — même gabarit que la liste d'options. */
+  .plan-note {
+    padding: 1rem 1.5rem;
+    text-align: center;
+    text-wrap: pretty;
+    color: var(--color-fg-2);
+  }
+
+  /* Flex plutôt que grid : les quatre options ont des longueurs très
+     inégales, des colonnes de largeur égale gaspilleraient la ligne. */
+  .plan-options-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem 2rem;
+    padding: 1rem 1.5rem;
+  }
+
+  /* Chrome commune aux surfaces de la section Tarifs (cartes de plan et
+     bloc d'options) : fond, bordure, et apparition au scroll. Ne contient
+     aucune règle de placement — chaque surface gère sa propre mise en page. */
+  .plan-surface {
     background: var(--color-bg-card);
     border: 1px solid var(--color-border-default);
     border-radius: var(--radius-lg);
 
-/* CSS individual transform properties — évite le conflit avec scale hover */
+    /* CSS individual transform properties — évite le conflit avec scale hover */
     opacity: 0;
     translate: 0 1.5rem;
     scale: 1;
@@ -943,11 +1064,44 @@
       background   200ms var(--ease-out) 0ms;
   }
 
-  section.is-visible .plan-card {
+  section.is-visible .plan-surface {
     opacity: 1;
     translate: 0 0;
   }
 
+  .plan-card {
+    position: relative;
+
+    @media (min-width: 59.9rem) {
+      grid-row: 1 / span 3;
+      display: grid;
+      grid-template-rows: subgrid;   /* emprunte les 3 rangées du parent */
+      row-gap: 1rem;
+    }
+    @media (max-width: 59.85rem) {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* /!\ padding INLINE seulement — le padding vertical d'un subgrid
+       décalerait ses pistes ; il est porté par head et par le dernier groupe. */
+    padding-inline: 1.5rem;
+    padding-block: 0;
+  }
+
+  .plan-card-head           { padding-block-start: 1.5rem; }
+  .plan-card-group:last-child { padding-block-end: 1.5rem; }
+
+  .plan-card-head,
+  .plan-card-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Le survol reste réservé aux cartes de plan : le bloc d'options n'est
+     pas une offre, il ne doit pas réagir comme telle. */
   .plan-card:hover {
     border-color: var(--color-gold);
   }
@@ -970,18 +1124,6 @@
     padding: 3px 12px;
     border-radius: var(--radius-pill);
     white-space: nowrap;
-  }
-
-  /* Badge secondaire inline (Accès SaaS) */
-  .plan-card-badge-secondary {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: var(--color-gold-tint-10);
-    border: 1px solid rgba(201, 168, 76, 0.3);
-    padding: 3px 8px;
-    border-radius: var(--radius-pill);
-    white-space: nowrap; /* avoid carriage return if too long */
   }
 
   /* En-tête de la carte */
@@ -1019,21 +1161,9 @@
     color: var(--color-fg-3);
   }
 
-  .plan-card-price {
-    font-family: var(--font-serif);
-    font-weight: var(--fw-semibold);
-    font-size: var(--fs-h3);
-    color: var(--color-gold);
-    padding-left: 0.5rem;
-    line-height: var(--lh-tight);
-  }
 
-  .plan-card-price-note {
-    font-family: var(--font-sans);
-    font-size: var(--fs-xs);
-    color: var(--color-fg-3);
-    margin-top: 0.2rem;
-  }
+
+
 
   .plan-card-divider {
     border: none;
@@ -1047,7 +1177,6 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    flex: 1;   /* pousse le délai vers le bas */
   }
 
   .plan-card-feature {
@@ -1097,14 +1226,51 @@
     }
   }
 
-  /* Préfixe "à partir de" — étiquette mini au-dessus du prix */
-  .plan-card-price-from {
+  /* Prix — création à gauche, abonnement à droite, sur une seule ligne */
+  .plan-card-prices {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .plan-card-price-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+
+  .plan-card-price-block--recurring {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  /* Étiquette mini au-dessus du montant : "à partir de", "puis" */
+  .plan-card-price-label {
     font-family: var(--font-sans);
     font-size: var(--fs-xs);
     color: var(--color-fg-3);
     text-transform: uppercase;
     letter-spacing: var(--ls-wide);
-    margin-bottom: 0.15rem;
+  }
+
+  .plan-card-price {
+    font-family: var(--font-serif);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-h3);
+    color: var(--color-gold);
+    line-height: var(--lh-tight);
+    text-wrap: nowrap;
+  }
+
+  /* "/ mois" — accolé au montant sans lui voler son poids visuel */
+  .plan-card-price-suffix {
+    font-family: var(--font-sans);
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-caption);
+    color: var(--color-fg-3);
+    margin-left: 0.25rem;
   }
 
   /* Feature exclue du plan — texte très atténué */
@@ -1135,67 +1301,6 @@
     color: var(--color-gold);
     font-weight: var(--fw-medium);
     font-style: normal;   /* annule l'italic hérité de --option */
-  }
-
-  /* Délai de livraison */
-  .plan-card-delay {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-sans);
-    font-size: var(--fs-xs);
-    color: var(--color-fg-3);
-  }
-
-  .plan-card-delay-dot {
-    flex-shrink: 0;
-    width: var(--size-dot);
-    height: var(--size-dot);
-    background: var(--color-gold-dark);
-    border-radius: 50%;
-  }
-
-  .pricing-note {
-    position: relative;
-    margin-top: 2rem;
-    margin-inline: auto;
-    max-width: 48rem;
-    padding: 1rem 1.25rem;
-    text-align: center;
-    background: var(--color-bg-input);
-    border: 1px solid var(--color-border-subtle);
-    border-top: none;
-    border-radius: var(--radius-lg);
-  }
-  
-  .pricing-note::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    background: linear-gradient(
-      90deg,
-      transparent              0%,
-      var(--color-gold-tint-20) 15%,
-      var(--color-gold-tint-40) 50%,
-      var(--color-gold-tint-20) 85%,
-      transparent              100%
-    );
-  }
-
-  /** Reveal animation **/
-  .pricing-note {
-    opacity: 0;
-    translate: 0 1.5rem;
-    transition:
-      opacity      700ms var(--ease-out-smooth) 1500ms,
-      translate    700ms var(--ease-out-smooth) 1500ms;
-  }
-
-  section.is-visible .pricing-note {
-    opacity: 1;
-    translate: 0 0;
   }
 
   /* === Card === */

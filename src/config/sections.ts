@@ -23,8 +23,7 @@ export const SECTION_IDS = {
   home:               'home',
   about:              'about',
   portfolio:          'portfolio',
-  pricingDev:         'pricing-dev',
-  pricingMaintenance: 'pricing-maintenance',
+  pricing:            'pricing',
   contact:            'contact',
 } as const;
 

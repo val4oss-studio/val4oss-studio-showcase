@@ -1,14 +1,12 @@
 import 'server-only';
 import { cache } from 'react';
 import type { Locale } from '@/config/locale';
-import type { StatusKey, BadgeKey } from '@/config/pricing';
+import type { StatusKey, FeatureKey, PlanGroupKey } from '@/config/pricing';
 import type { PillarId } from '@/config/sections'
 
 interface PlanI18n {
   name: string;
   target: string;
-  priceNote: string;
-  delay?: string;          // "1 à 2 semaines" — dev plans only
 }
 
 export interface Dictionary {
@@ -17,8 +15,7 @@ export interface Dictionary {
     home: string;
     about: string;
     portfolio: string;
-    pricingDev: string;
-    pricingMaintenance: string;
+    pricing: string;
     contact: string;
   };
   social: {
@@ -58,29 +55,19 @@ export interface Dictionary {
     }>;
   };
   pricing: {
-    badges: Record<BadgeKey, string>;    // keyed by badge key (e.g. "saasIncluded")
-    saasNoteAccent: string;
-    saasNote: string;
-    status: Record<StatusKey, string>;    // keyed by status key (e.g. "recommended")
-  };
-  pricingDev: {
     eyebrow: string;
     title: string;
     titleAccent?: string;
     subtitle: string;
-    priceFrom: string;                    // "à partir de" / "from"
-    plans: Record<string, PlanI18n>;      // keyed by plan id (e.g. "essentiel")
-    features: Record<string, string>;     // keyed by feature key (e.g. "onepage")
-  };
-  pricingMaintenance: {
-    eyebrow: string;
-    title: string;
-    titleAccent?: string;
-    subtitle: string;
-    reactivityNote: string;
-    reactivityAccent: string;
-    plans: Record<string, PlanI18n>;
-    features: Record<string, string>;
+    priceFrom: string;                              // "à partir de"
+    recurringPrefix: string;                        // "puis"
+    recurringSuffix: string;                        // "/ mois"
+    plans: Record<string, PlanI18n>;                // keyed by plan id
+    features: Record<FeatureKey, string>;           // keyed by feature key
+    groups: Record<PlanGroupKey, {title: string; subtitle: string}>;
+    options: {title: string; subtitle: string};
+    status: Record<StatusKey, string>;
+    saasNote: { title: string; subtitle: string; body: string };
   };
   contact: {
     eyebrow:      string;
