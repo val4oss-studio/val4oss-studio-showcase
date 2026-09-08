@@ -1,7 +1,6 @@
 import {
   HeroSection,
   AboutSection,
-  WhyUsSection,
   PortfolioSection,
   PricingDevSection,
   PricingMaintenanceSection,
@@ -24,7 +23,6 @@ export default async function Home({
     <>
       <HeroSection  id={SECTION_IDS.home}  dict={dict.hero}  />
       <AboutSection id={SECTION_IDS.about} dict={dict.about} />
-      <WhyUsSection id={SECTION_IDS.whyUs} dict={dict.whyUs} />
       <PortfolioSection id={SECTION_IDS.portfolio} dict={dict.portfolio} />
       <PricingDevSection 
         id={SECTION_IDS.pricingDev}

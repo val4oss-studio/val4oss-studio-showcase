@@ -41,6 +41,7 @@ export function AboutSection({ id, dict }: AboutSectionClientProps): JSX.Element
                   icon={pillar.icon}
                   title={pillarI18n.label}
                   body={pillarI18n.body}
+                  strike={pillarI18n.strike}
                   accent="top"
                 />
               );

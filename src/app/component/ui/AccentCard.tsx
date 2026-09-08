@@ -7,6 +7,7 @@ export interface AccentCardProps {
   title: string;
   body: string;
   accent: 'top' | 'left';
+  strike?: string; // Optional struck-through gold lead-in
 }
 
 export function AccentCard({
@@ -14,6 +15,7 @@ export function AccentCard({
   title,
   body,
   accent,
+  strike,
 }: AccentCardProps): JSX.Element {
 
   return (
@@ -25,6 +27,11 @@ export function AccentCard({
         {title}
       </h3>
       <p className="t-body">
+        {
+          strike && <>
+            <span className="line-through t-accent">{strike}</span>{' '}
+          </>
+        }
         {body}
       </p>
     </article>

@@ -16,7 +16,7 @@ export function PortfolioSection(
     <RevealSection id={id}>
       <div className="section-container">
 
-        <p className="section-eyebrow t-eyebrow">
+        <p className="section-eyebrow section-eyebrow--right t-eyebrow">
           {dict.eyebrow}
         </p>
         <SectionTitle accent={dict.titleAccent}>

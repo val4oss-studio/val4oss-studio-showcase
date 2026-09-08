@@ -42,7 +42,7 @@ export function PricingDevSection(
     <RevealSection id={id}>
       <div className="section-container">
 
-        <p className="section-eyebrow section-eyebrow--right t-eyebrow">{dictDev.eyebrow}</p>
+        <p className="section-eyebrow t-eyebrow">{dictDev.eyebrow}</p>
         <SectionTitle accent={dictDev.titleAccent}>{dictDev.title}</SectionTitle>
         <p className="section-intro t-body">{dictDev.subtitle}</p>
 

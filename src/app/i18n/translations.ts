@@ -2,6 +2,7 @@ import 'server-only';
 import { cache } from 'react';
 import type { Locale } from '@/config/locale';
 import type { StatusKey, BadgeKey } from '@/config/pricing';
+import type { PillarId } from '@/config/sections'
 
 interface PlanI18n {
   name: string;
@@ -15,7 +16,6 @@ export interface Dictionary {
     label: string;
     home: string;
     about: string;
-    whyUs: string;
     portfolio: string;
     pricingDev: string;
     pricingMaintenance: string;
@@ -40,19 +40,10 @@ export interface Dictionary {
     title: string;
     titleAccent?: string;
     intro: string;
-    pillars: Record< string, {
+    pillars: Record< PillarId, {
       label: string;
       body: string;
-    }>;
-  };
-  whyUs: {
-    eyebrow: string;
-    title: string;
-    titleAccent?: string;
-    subtitle: string;
-    cards: Record<string, {
-      title: string;
-      desc: string;
+      strike?: string;                   // Optional struck-through lead-in
     }>;
   };
   portfolio: {

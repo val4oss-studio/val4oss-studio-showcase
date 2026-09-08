@@ -24,46 +24,35 @@
     "logoAlt":       "Logo val4oss studio"
   },
   "about": {
-    "eyebrow":     "Qui je suis",
-    "title":       "Un seul opérateur.",
-    "titleAccent": "Propriété totale.",
-    "intro":       "Je conçois et livre des sites vitrine premium et des SaaS sur mesure pour les studios, indépendants et petites équipes qui tiennent à leur image en ligne. Un opérateur, une stack, propriété totale du résultat — sans intermédiaire entre nous.",
+    "eyebrow":     "Ce que je fais pour vous",
+    "title":       "Du code, pas des",
+    "titleAccent": "raccourcis.",
+    "intro":       "Je conçois et livre des sites vitrine premium et des SaaS sur mesure pour les studios, indépendants et petites équipes qui tiennent à leur image en ligne. Un site rapide, sécurisé, qui vous appartient vraiment — et qui ne deviendra pas une dette technique dans deux ans.",
     "pillars": {
-      "hosting": {
-        "label": "Hébergement long terme",
-        "body":  "Une fois votre site en ligne, je reste votre hébergeur : serveur privé EU, sauvegardes automatiques et certificats qui se renouvellent seuls."
-      },
-      "workspace": {
-        "label": "Votre espace dédié",
-        "body":  "Chaque client dispose d'un espace privé dans ma plateforme SaaS : tableau blanc, forums, docs partagés — tout pour collaborer à votre rythme."
+      "craft": {
+        "label":  "Fait main par un ingénieur",
+        "strike": "WordPress, no-code, vibe-coding.",
+        "body":   "Chaque ligne est écrite à la main sur une stack dédiée, Next.js + Tailwind. Pas de thème, pas de générateur, pas de dette technique."
       },
       "openSource": {
-        "label": "Open-source natif",
-        "body":  "Je vis dans l'open-source — tout ce que je construis est auditable, exportable et vous appartient."
-      }
-    }
-  },
-  "whyUs": {
-    "eyebrow":     "Pourquoi me choisir",
-    "title":       "Ce que tu ne",
-    "titleAccent": "trouveras pas ailleurs",
-    "subtitle":    "Fait main, exigence principale.",
-    "cards": {
-      "craft": {
-        "title": "Fait main, ligne par ligne",
-        "desc":  "Next.js + Tailwind CSS pur. Zéro WordPress, zéro no-code, génération principal par humain. Du code propre, sans dette technique."
+        "label": "Open-source, propriété totale",
+        "body":  "Tout ce que je construis est auditable, exportable et vous appartient. Aucun verrou propriétaire : vous restez libre de partir avec votre code."
       },
-      "pricing": {
-        "title": "Prix honnêtes, qualité premium",
-        "desc":  "Pas de frais d'agence. Tu paies le travail, pas la structure. Lighthouse ≥ 90 garanti."
+      "fairPrice": {
+        "label": "Prix honnête, qualité premium",
+        "body":  "Pas de frais d'agence : vous payez le travail, pas la structure. Et la qualité se mesure — score Lighthouse ≥ 90 garanti."
       },
-      "sovereignty": {
-        "title": "Hébergement souverain EU",
-        "desc":  "Hébergé en Europe, dans environnement de haute sécurité. Conformité RGPD native. Cloudflare inclus. Tes données restent protégées."
+      "hosting": {
+        "label": "Hébergement souverain, en Europe",
+        "body":  "Votre site vit sur un serveur privé européen, dans un espace isolé et chiffré. RGPD natif, sauvegardes automatiques, Cloudflare inclus."
       },
       "followUp": {
-        "title": "Un suivi comme nulle part ailleurs",
-        "desc":  "Accès à un écosystème SaaS privé : whiteboard, notes de projet, forum, feedback. Tu suis l'avancée en direct, et tu bénéficies d'un accès privé à des conseils, avis, idées."
+        "label": "Un suivi comme nulle part ailleurs",
+        "body":  "Après la livraison, vous gardez un accès direct à mes conseils, mes retours et mes arbitrages techniques. Réponse sous 72h ouvrées."
+      },
+      "workspace": {
+        "label": "Votre espace client dédié",
+        "body":  "Un espace privé pour suivre le projet en direct : tableau blanc, forum, documents partagés, retours structurés. Zéro échange perdu dans les emails."
       }
     }
   },

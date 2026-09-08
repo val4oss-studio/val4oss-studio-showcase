@@ -1,32 +1,27 @@
 import type { IconKey } from '@/config/icons';
 
+export const PILLARS_IDS = [
+  'craft', 'openSource', 'fairPrice', 'hosting', 'followUp', 'workspace',
+] as const
+export type PillarId = typeof PILLARS_IDS[number];
+
 export interface PillarConfig {
-  id:   string;      // Key used in i18n pillars dict
+  id:   PillarId;
   icon: IconKey;
 }
 
 export const PILLARS: PillarConfig[] = [
-  { id: 'hosting',    icon: 'server' },
-  { id: 'workspace',  icon: 'workspace' },
+  { id: 'craft',      icon: 'code' },
   { id: 'openSource', icon: 'open-source' },
-];
-
-export interface WhyCardConfig {
-  id:   string;      // Key used in i18n cards dict
-  icon: IconKey;
-}
-
-export const WHY_CARDS: WhyCardConfig[] = [
-  { id: 'craft',       icon: 'code' },
-  { id: 'pricing',     icon: 'currency-euro' },
-  { id: 'sovereignty', icon: 'lock' },
-  { id: 'followUp',    icon: 'layout-dashboard' },
+  { id: 'fairPrice',  icon: 'currency-euro' },
+  { id: 'hosting',    icon: 'server' },
+  { id: 'followUp',   icon: 'star' },
+  { id: 'workspace',  icon: 'workspace' },
 ];
 
 export const SECTION_IDS = {
   home:               'home',
   about:              'about',
-  whyUs:              'why-us',
   portfolio:          'portfolio',
   pricingDev:         'pricing-dev',
   pricingMaintenance: 'pricing-maintenance',
