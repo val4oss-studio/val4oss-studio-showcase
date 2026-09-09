@@ -5,7 +5,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { isValidLocale, locales, type Locale } from '@/config/locale';
 import '@/app/globals.css';
 import { getDictionary } from '@/app/i18n/translations';
-import { Footer } from '@/app/component/layout';
+import { BackgroundVideo, Footer } from '@/app/component/layout';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -170,7 +170,8 @@ export default async function LocaleLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <main className="flex-1">
+        <BackgroundVideo />
+        <main className="relative z-1 flex-1">
           {children}
         </main>
         <Footer 

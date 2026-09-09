@@ -280,16 +280,22 @@
     box-sizing: border-box;
   }
 
-  html, body {
+  /* html paints the canvas; body stays transparent so the fixed
+     .bg-video-layer shows through behind the content. */
+  html {
     background-color: var(--color-bg-page);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: transparent;
+  }
+
+  html, body {
     color: var(--color-fg-2);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  html {
-    scroll-behavior: smooth;
   }
 
 }
@@ -474,6 +480,56 @@
   }
 
   /* === background === */
+
+  /* Ambient video layer — scrubbed by the page scroll (see BackgroundVideo).
+     Sits behind every section: `main` and `.footer` are lifted to z-index 1. */
+  .bg-video-layer {
+    position: fixed;
+    inset: 0;
+    height: 100lvh; /* lvh: no gap when the mobile URL bar collapses */
+    z-index: 0;
+    pointer-events: none;
+    isolation: isolate; /* confines the tint blend mode to this layer */
+    animation: var(--animate-fade-in); /* mounted client-side, so fade it in */
+  }
+
+  /* Partly desaturated and dimmed: the source is already golden-on-dark,
+     so some of its own colour is kept and .bg-video-tint does the rest. */
+  .bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.5) contrast(1.1) brightness(0.55);
+    opacity: 0.45;
+    mask-image: radial-gradient(
+      ellipse 90% 80% at 50% 45%,
+      #000 30%,
+      transparent 95%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 90% 80% at 50% 45%,
+      #000 30%,
+      transparent 95%
+    );
+  }
+
+  /* Page-coloured veil — drowns the clip back into the palette */
+  .bg-video-tint {
+    position: absolute;
+    inset: 0;
+    background: var(--color-bg-page);
+    opacity: 0.55;
+  }
+
+  /* Pushes the remaining greys towards the brand gold */
+  .bg-video-tint::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--color-gold);
+    mix-blend-mode: color;
+    opacity: 0.35;
+  }
 
   .bg-dots {
     position: absolute;
@@ -1408,6 +1464,7 @@
 
   .footer {
     position: relative;
+    z-index: 1; /* above .bg-video-layer */
     padding: 3rem 1.5rem 2rem;
     background: var(--color-bg-page);
   }
