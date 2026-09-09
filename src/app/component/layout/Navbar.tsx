@@ -86,6 +86,9 @@ export function Navbar({ dictNav, locale }: NavbarProps): JSX.Element {
         width={280}
         height={200}
         className="navbar-logo-image"
+        /* Toujours au-dessus de la ligne de flottaison, et LCP sur les pages
+           sans hero (documents légaux) : jamais de chargement différé. */
+        loading="eager"
       />
     </Link>
   );

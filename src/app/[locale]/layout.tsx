@@ -167,6 +167,10 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
+      /* Next 16 ne neutralise plus `scroll-behavior: smooth` de lui-même : cet
+         attribut le lui redemande, pour que les ancres restent fluides sans
+         que les changements de page défilent en douceur jusqu'en haut. */
+      data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">

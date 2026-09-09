@@ -36,7 +36,9 @@ export function HeroSection({ id, dict }: HeroSectionProps) {
               width={1991}
               height={954}
               style={{ width: '100%', height: 'auto' }}
-              priority
+              /* LCP de la page d'accueil — `preload` remplace `priority`,
+                 déprécié depuis Next 16. */
+              preload
             />
           </div>
 
