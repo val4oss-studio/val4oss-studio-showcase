@@ -17,6 +17,9 @@ export interface Dictionary {
     portfolio: string;
     pricing: string;
     contact: string;
+    menuOpen: string;                               // aria — hamburger fermé
+    menuClose: string;                              // aria — hamburger ouvert
+    language: string;                               // aria — bascule FR/EN
   };
   social: {
     label: string;

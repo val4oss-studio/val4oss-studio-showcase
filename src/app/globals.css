@@ -264,6 +264,11 @@
   --size-icon:    2.25rem;   /* 36px */
   --size-icon-glyph: 1.25rem; /* 20px */
 
+  /* Navbar — hauteurs au repos puis rétractée (voir .navbar) */
+  --size-navbar:          5rem;
+  --size-navbar-scrolled: 3.75rem;
+  --size-navbar-logo:     2.25rem;
+
   /* Largeur de la colonne de libellés de la section Tarifs */
   --size-plans-label: 11rem;
 }
@@ -285,6 +290,8 @@
   html {
     background-color: var(--color-bg-page);
     scroll-behavior: smooth;
+    /* Les ancres (#pricing…) ne doivent pas finir sous la barre fixe */
+    scroll-padding-top: var(--size-navbar);
   }
 
   body {
@@ -499,8 +506,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(0.5) contrast(1.1) brightness(0.55);
-    opacity: 0.45;
+    filter: grayscale(0.7) contrast(1.1) brightness(0.55);
+    opacity: 0.2;
     mask-image: radial-gradient(
       ellipse 90% 80% at 50% 45%,
       #000 30%,
@@ -1460,6 +1467,343 @@
     height: 1rem;
   }
 
+  /* === navbar === */
+
+  /*
+   * Barre fixe, transparente au-dessus du hero : seul le scroll lui donne un
+   * fond. La rétraction — hauteur du bandeau + échelle de son contenu — est
+   * entièrement pilotée par la classe `is-scrolled` posée par le composant ;
+   * aucune valeur n'est calculée en JavaScript.
+   */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background-color: transparent;
+    transition:
+      background-color
+        var(--transition-duration-base) var(--ease-out-smooth),
+      backdrop-filter
+        var(--transition-duration-base) var(--ease-out-smooth);
+  }
+
+  .navbar.is-scrolled {
+    background-color: color-mix(
+      in srgb, var(--color-bg-page) 85%, transparent
+    );
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .navbar-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--size-navbar);
+    padding-inline: 1rem;
+    transition: height var(--transition-duration-base) var(--ease-out-smooth);
+  }
+
+  .navbar.is-scrolled .navbar-inner {
+    height: var(--size-navbar-scrolled);
+  }
+
+  /* Filet or — révélé en même temps que le fond */
+  .navbar-border {
+    bottom: 0;
+    opacity: 0;
+    transition: opacity var(--transition-duration-base) var(--ease-out-smooth);
+  }
+
+  .navbar.is-scrolled .navbar-border {
+    opacity: 1;
+  }
+
+  /* --- Bandeau desktop : liens · logo · liens --- */
+
+  .navbar-desktop {
+    display: none;
+    @media (min-width: 48rem) {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: clamp(1.5rem, 4vw, 3rem);
+      transition: scale var(--transition-duration-base) var(--ease-out-smooth);
+    }
+  }
+
+  /* Rétraction : le bandeau entier perd 8 % — « légèrement » */
+  .navbar.is-scrolled .navbar-desktop {
+    scale: 0.92;
+  }
+
+  .navbar-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2.5vw, 2rem);
+    list-style: none;
+  }
+
+  .navbar-links--left  { justify-content: flex-end; }
+  .navbar-links--right { justify-content: flex-start; }
+
+  .navbar-link {
+    position: relative;
+    display: inline-block;
+    padding-block: 0.35rem;
+    font-family: var(--font-serif);
+    font-size: var(--fs-caption);
+    font-weight: var(--fw-medium);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-wider);
+    text-decoration: none;
+    white-space: nowrap;
+    color: var(--color-fg-2);
+    transition: color var(--transition-duration-base) var(--ease-out);
+  }
+
+  .navbar-link:hover {
+    color: var(--color-gold);
+  }
+
+  /* Soulignement or déployé depuis le centre */
+  .navbar-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: var(--color-gold);
+    scale: 0 1;
+    transition: scale var(--transition-duration-base) var(--ease-out-smooth);
+  }
+
+  .navbar-link:hover::after {
+    scale: 1 1;
+  }
+
+  .navbar-logo {
+    display: block;
+    flex-shrink: 0;
+    line-height: 0;
+    transition: opacity var(--transition-duration-base) var(--ease-out);
+  }
+
+  .navbar-logo:hover {
+    opacity: 0.75;
+  }
+
+  .navbar-logo-image {
+    height: var(--size-navbar-logo);
+    width: auto;
+  }
+
+  /* Bascule de langue — ancrée à droite, hors du groupe centré */
+  .navbar-actions {
+    display: none;
+    @media (min-width: 48rem) {
+      position: absolute;
+      right: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: scale var(--transition-duration-base) var(--ease-out-smooth);
+    }
+  }
+
+  .navbar.is-scrolled .navbar-actions {
+    scale: 0.92;
+  }
+
+  /* --- Bandeau mobile : logo · hamburger --- */
+
+  /* z-index : la barre reste lisible par-dessus l'overlay ouvert */
+  .navbar-mobile {
+    position: relative;
+    z-index: 60;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    @media (min-width: 48rem) { display: none; }
+  }
+
+  .navbar-burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.375rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .navbar-burger-line {
+    width: 1.5rem;
+    height: 2px;
+    margin-inline: auto;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-fg-1);
+    transition:
+      translate var(--transition-duration-base) var(--ease-out-smooth),
+      rotate    var(--transition-duration-base) var(--ease-out-smooth),
+      scale     var(--transition-duration-base) var(--ease-out-smooth),
+      opacity   var(--transition-duration-fast) var(--ease-out);
+  }
+
+  /*
+   * Repli en croix. 0.5rem = l'écart entre deux traits (gap 0.375rem + 2px
+   * de hauteur) : les traits extrêmes rejoignent la ligne médiane, puis
+   * pivotent — les propriétés individuelles translate/rotate s'appliquent
+   * dans cet ordre, sans matrice à écrire à la main.
+   */
+  .navbar-burger.is-open .navbar-burger-line:nth-child(1) {
+    translate: 0 0.5rem;
+    rotate: 45deg;
+  }
+
+  .navbar-burger.is-open .navbar-burger-line:nth-child(2) {
+    opacity: 0;
+    scale: 0 1;
+  }
+
+  .navbar-burger.is-open .navbar-burger-line:nth-child(3) {
+    translate: 0 -0.5rem;
+    rotate: -45deg;
+  }
+
+  /* --- Overlay mobile --- */
+
+  .navbar-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    height: 100dvh;
+    background-color: color-mix(
+      in srgb, var(--color-bg-page) 92%, transparent
+    );
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    opacity: 0;
+    /* visibility — retire aussi les liens du parcours clavier */
+    visibility: hidden;
+    transition:
+      opacity    var(--transition-duration-base) var(--ease-out-smooth),
+      visibility var(--transition-duration-base) var(--ease-out-smooth);
+    @media (min-width: 48rem) { display: none; }
+  }
+
+  .navbar-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navbar-menu-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+    list-style: none;
+  }
+
+  /* Entrée décalée des liens — même mécanique que les cartes de la section
+     À propos (--stagger-index posé par nth-child) */
+  .navbar-menu-links li:nth-child(1) { --stagger-index: 0; }
+  .navbar-menu-links li:nth-child(2) { --stagger-index: 1; }
+  .navbar-menu-links li:nth-child(3) { --stagger-index: 2; }
+  .navbar-menu-links li:nth-child(4) { --stagger-index: 3; }
+  .navbar-menu-links li:nth-child(5) { --stagger-index: 4; }
+  .navbar-menu-links li:nth-child(6) { --stagger-index: 5; }
+
+  .navbar-menu-links li {
+    opacity: 0;
+    translate: 0 1rem;
+    transition:
+      opacity
+        var(--transition-duration-base) var(--ease-out-smooth)
+        calc(var(--stagger-index, 0) * 60ms),
+      translate
+        var(--transition-duration-base) var(--ease-out-smooth)
+        calc(var(--stagger-index, 0) * 60ms);
+  }
+
+  .navbar-menu.is-open .navbar-menu-links li {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  .navbar-menu-link {
+    position: relative;
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-medium);
+    letter-spacing: var(--ls-tight);
+    text-decoration: none;
+    color: var(--color-fg-1);
+    transition: color var(--transition-duration-base) var(--ease-out);
+  }
+
+  .navbar-menu-link:hover,
+  .navbar-menu-link:active {
+    color: var(--color-gold);
+  }
+
+  .navbar-menu-actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* === language toggle === */
+
+  /* Même pastille que .hero-availability, à l'échelle d'un bouton */
+  .lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-pill);
+    color: var(--color-fg-2);
+    text-decoration: none;
+    transition:
+      color            var(--transition-duration-base) var(--ease-out),
+      border-color     var(--transition-duration-base) var(--ease-out),
+      background-color var(--transition-duration-base) var(--ease-out);
+  }
+
+  .lang-toggle:hover {
+    color: var(--color-gold);
+    border-color: var(--color-gold-tint-40);
+    background-color: var(--color-gold-tint-10);
+  }
+
+  .lang-toggle .icon {
+    width:  var(--size-icon-xs);
+    height: var(--size-icon-xs);
+  }
+
+  .lang-toggle-code {
+    font-family: var(--font-sans);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    letter-spacing: var(--ls-wide);
+  }
+
   /* === footer === */
 
   .footer {
@@ -1473,10 +1817,11 @@
    * Gradient gold border — replaces a plain border-top.
    * Fades in from the sides to give a refined editorial feel,
    * matching the gold accent language from the hero and about sections.
+   * Shared with the navbar, which pins the same hairline to its bottom edge.
    */
-  .footer-border {
+  .footer-border,
+  .navbar-border {
     position: absolute;
-    top: 0;
     left: 0;
     right: 0;
     height: 1px;
@@ -1489,6 +1834,8 @@
       transparent 100%
     );
   }
+
+  .footer-border { top: 0; }
 
   /*
    * Responsive 3-column grid: brand (wider) + nav + social.

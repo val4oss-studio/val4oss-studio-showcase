@@ -6,7 +6,10 @@
     "whyUs":              "Pourquoi moi",
     "portfolio":          "En production",
     "pricing":            "Tarifs",
-    "contact":            "Contact"
+    "contact":            "Contact",
+    "menuOpen":           "Ouvrir le menu",
+    "menuClose":          "Fermer le menu",
+    "language":           "Changer de langue"
   },
   "social": {
       "label":     "Réseaux sociaux",

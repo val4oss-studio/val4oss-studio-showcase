@@ -5,7 +5,10 @@
     "about":              "About",
     "portfolio":          "Live projects",
     "pricing":            "Pricing",
-    "contact":            "Contact"
+    "contact":            "Contact",
+    "menuOpen":           "Open menu",
+    "menuClose":          "Close menu",
+    "language":           "Switch language"
   },
   "social": {
     "label":     "Social media",
