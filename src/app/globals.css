@@ -658,6 +658,97 @@
     }
     gap: 1.5rem;
   }
+  
+  /* === Accent Card === */
+
+  .accent-card:nth-child(1) { --stagger-index: 0; }
+  .accent-card:nth-child(2) { --stagger-index: 1; }
+  .accent-card:nth-child(3) { --stagger-index: 2; }
+  .accent-card:nth-child(4) { --stagger-index: 3; }
+  .accent-card:nth-child(5) { --stagger-index: 4; }
+  .accent-card:nth-child(6) { --stagger-index: 5; }
+
+  .accent-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-default);
+    /* État initial pour l'animation reveal */
+    opacity: 0;
+    translate: 0 1.5rem;
+    will-change: opacity, translate;
+  }
+
+  section.is-visible .accent-card {
+    opacity: 1;
+    translate: 0 0;
+  }
+  
+  .accent-card-icon {
+    width: var(--size-icon);
+    height: var(--size-icon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-gold-tint-10);
+    border: 1px solid var(--color-gold-tint-20);
+    border-radius: var(--radius-sm);
+    color: var(--color-gold);
+    flex-shrink: 0;
+  }
+
+  /* --- Variante top --- */
+  .accent-card--top {
+    border-top: 2px solid var(--color-gold-tint-20);
+    transition:
+      opacity
+        700ms
+        var(--ease-out-smooth)
+        calc(1000ms + var(--stagger-index, 0) * 150ms),
+      translate
+        700ms
+        var(--ease-out-smooth)
+        calc(1000ms + var(--stagger-index, 0) * 150ms),
+      border-top-color 250ms var(--ease-out)        0ms,
+      background       250ms var(--ease-out)        0ms;
+  }
+
+  .accent-card--top:hover {
+    border-top-color: var(--color-gold);
+    background: var(--color-bg-elevated);
+  }
+
+  .accent-card--top .accent-card-icon {
+    align-self: center;
+  }
+
+  .accent-card--top h3 {
+    align-self: center;
+  }
+
+  /* --- Variante left --- */
+  .accent-card--left {
+    border-left: 2px solid var(--color-gold-tint-40);
+    transition:
+      opacity
+        700ms
+        var(--ease-out-smooth)
+        calc(1000ms + var(--stagger-index, 0) * 150ms),
+      translate
+        700ms
+        var(--ease-out-smooth)
+        calc(1000ms + var(--stagger-index, 0) * 150ms),
+      border-left-color 250ms var(--ease-out)        0ms,
+      background        250ms var(--ease-out)        0ms;
+  }
+
+  .accent-card--left:hover {
+    border-left-color: var(--color-gold);
+    background: var(--color-bg-elevated);
+  }
 
   /** === Portfolio === **/
 
@@ -1161,10 +1252,6 @@
     color: var(--color-fg-3);
   }
 
-
-
-
-
   .plan-card-divider {
     border: none;
     height: 1px;
@@ -1302,96 +1389,7 @@
     font-weight: var(--fw-medium);
     font-style: normal;   /* annule l'italic hérité de --option */
   }
-
-  /* === Card === */
-
-  .accent-card:nth-child(1) { --stagger-index: 0; }
-  .accent-card:nth-child(2) { --stagger-index: 1; }
-  .accent-card:nth-child(3) { --stagger-index: 2; }
-  .accent-card:nth-child(4) { --stagger-index: 3; }
-
-  .accent-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    padding: 1.25rem;
-    border-radius: var(--radius-md);
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border-default);
-    /* État initial pour l'animation reveal */
-    opacity: 0;
-    translate: 0 1.5rem;
-    will-change: opacity, translate;
-  }
-
-  section.is-visible .accent-card {
-    opacity: 1;
-    translate: 0 0;
-  }
   
-  .accent-card-icon {
-    width: var(--size-icon);
-    height: var(--size-icon);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--color-gold-tint-10);
-    border: 1px solid var(--color-gold-tint-20);
-    border-radius: var(--radius-sm);
-    color: var(--color-gold);
-    flex-shrink: 0;
-  }
-
-  /* --- Variante top --- */
-  .accent-card--top {
-    border-top: 2px solid var(--color-gold-tint-20);
-    transition:
-      opacity
-        700ms
-        var(--ease-out-smooth)
-        calc(1000ms + var(--stagger-index, 0) * 150ms),
-      translate
-        700ms
-        var(--ease-out-smooth)
-        calc(1000ms + var(--stagger-index, 0) * 150ms),
-      border-top-color 250ms var(--ease-out)        0ms,
-      background       250ms var(--ease-out)        0ms;
-  }
-
-  .accent-card--top:hover {
-    border-top-color: var(--color-gold);
-    background: var(--color-bg-elevated);
-  }
-
-  .accent-card--top .accent-card-icon {
-    align-self: center;
-  }
-
-  .accent-card--top h3 {
-    align-self: center;
-  }
-
-  /* --- Variante left --- */
-  .accent-card--left {
-    border-left: 2px solid var(--color-gold-tint-40);
-    transition:
-      opacity
-        700ms
-        var(--ease-out-smooth)
-        calc(1000ms + var(--stagger-index, 0) * 150ms),
-      translate
-        700ms
-        var(--ease-out-smooth)
-        calc(1000ms + var(--stagger-index, 0) * 150ms),
-      border-left-color 250ms var(--ease-out)        0ms,
-      background        250ms var(--ease-out)        0ms;
-  }
-
-  .accent-card--left:hover {
-    border-left-color: var(--color-gold);
-    background: var(--color-bg-elevated);
-  }
-
   /* === icons === */
 
   .icon {
