@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { JSX } from 'react';
 import type { Dictionary } from '@/app/i18n/translations';
+import { LEGAL_DOC_KEYS, legalDocHref } from '@/config/legal';
 import { SECTION_IDS, NAV_SECTION_KEYS } from '@/config/sections';
 import { Icon } from '@/app/component/ui';
 
@@ -72,8 +73,25 @@ export function Footer({
 
         </div>
 
-        {/* ── Copyright bar ── */}
+        {/* ── Liens légaux + copyright ── */}
         <div className="footer-bottom">
+          <nav aria-label={dictFooter.legal.label}>
+            <ul className="footer-legal-links">
+            {
+              LEGAL_DOC_KEYS.map((key) => (
+                <li key={key}>
+                  <Link
+                    href={legalDocHref(locale, key)}
+                    className="t-link t-caption"
+                  >
+                    {dictFooter.legal.links[key]}
+                  </Link>
+                </li>
+              ))
+            }
+            </ul>
+          </nav>
+
           <p className="t-caption">{copyright}</p>
         </div>
       </div>

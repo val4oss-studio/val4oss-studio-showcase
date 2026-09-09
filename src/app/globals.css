@@ -1804,6 +1804,105 @@
     letter-spacing: var(--ls-wide);
   }
 
+  /* === legal ===
+     Documents légaux rendus depuis MDX. La typographie est appliquée balise
+     par balise dans src/mdx-components.tsx (utilitaires `t-*`) ; on ne gère
+     ici que la mise en page. Attention : les `@utility t-*` sont générés dans
+     la couche `utilities`, qui l'emporte sur `components` — ne jamais tenter
+     de redéfinir depuis ici une propriété déjà posée par un `t-*`. */
+
+  .legal-page {
+    /* Dégage la navbar fixe, comme le scroll-padding-top de <html> */
+    padding: calc(var(--size-navbar) + 3rem) 1.5rem 5rem;
+  }
+
+  .legal-prose {
+    /* ~70 caractères par ligne : longueur de lecture confortable sur un
+       texte long, plus étroite que les 72rem de .section-container */
+    max-width: 46rem;
+    margin: 0 auto;
+  }
+
+  /* Rythme vertical : régulier, aéré à l'approche des titres */
+  .legal-prose > * + *  { margin-top: 1.25rem; }
+  .legal-prose > h2     { margin-top: 3.5rem; }
+  .legal-prose > h3     { margin-top: 2.5rem; }
+  .legal-prose > h4     { margin-top: 2rem; }
+  .legal-prose > h1 + p { margin-top: 0.75rem; }
+
+  .legal-prose strong {
+    color: var(--color-fg-1);
+    font-weight: var(--fw-semibold);
+  }
+
+  .legal-prose ul,
+  .legal-prose ol {
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .legal-prose li::marker { color: var(--color-gold); }
+
+  /* Les `---` du markdown ponctuent chaque article : filet discret, pas
+     le dégradé doré de la navbar, qui serait trop bruyant répété. */
+  .legal-prose hr {
+    border: 0;
+    height: 1px;
+    margin: 3rem 0;
+    background: var(--color-border-subtle);
+  }
+
+  .legal-prose blockquote {
+    border-left: 2px solid var(--color-gold-tint-40);
+    padding-left: 1rem;
+  }
+
+  /* Puce de code inline (noms de domaine, références d'articles) */
+  .legal-prose code {
+    background: var(--color-bg-input);
+    border-radius: var(--radius-xs);
+    padding: 0.125rem 0.375rem;
+  }
+
+  /* Tableaux : ils défilent dans leur conteneur, jamais la page */
+  .legal-table-scroll {
+    overflow-x: auto;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-md);
+  }
+
+  .legal-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .legal-table th,
+  .legal-table td {
+    font-family: var(--font-sans);
+    font-size: var(--fs-body);
+    line-height: var(--lh-normal);
+    color: var(--color-fg-2);
+    text-align: left;
+    vertical-align: top;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .legal-table th {
+    color: var(--color-fg-1);
+    font-weight: var(--fw-medium);
+  }
+
+  .legal-table tr:last-child th,
+  .legal-table tr:last-child td { border-bottom: 0; }
+
+  /* Tableaux clé/valeur : `| | |` produit un en-tête vide en GFM, que l'on
+     masque plutôt que de laisser un bandeau fantôme en haut du tableau. */
+  .legal-table thead:not(:has(th:not(:empty))) { display: none; }
+
   /* === footer === */
 
   .footer {
@@ -1870,12 +1969,25 @@
     margin-top: 0.75rem;
   }
 
-  /* Divider + copyright row */
+  /* Divider + liens légaux + copyright */
   .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     gap: 0.75rem;
     padding-top: 1.5rem;
     border-top: 1px solid var(--color-border-subtle);
+  }
+
+  /* Liens légaux — une ligne au-dessus du copyright, repliée sur mobile */
+  .footer-legal-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem 1.25rem;
   }
 
 }

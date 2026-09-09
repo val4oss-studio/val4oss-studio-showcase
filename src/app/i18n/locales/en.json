@@ -172,7 +172,13 @@
     "brand":     "val4oss studio",
     "tagline":   "A premium stack for your presence online.",
     "legal": {
-      "copyright": "© {year} val4oss studio. All rights reserved."
+      "copyright": "© {year} val4oss studio. All rights reserved.",
+      "label":     "Legal information",
+      "links": {
+        "legalNotice": "Legal notice",
+        "privacy":     "Privacy policy",
+        "terms":       "Terms of sale"
+      }
     }
   }
 }

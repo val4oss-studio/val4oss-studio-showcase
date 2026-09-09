@@ -1,8 +1,12 @@
 import type { NextConfig } from 'next';
+import createMDX from '@next/mdx';
 
 const nextConfig: NextConfig = {
   // Enable static optimization for better SEO
   output: 'standalone',
+
+  // Les documents légaux sont des pages `.mdx` (voir src/app/[locale]/legal)
+  pageExtensions: ['ts', 'tsx', 'mdx'],
   
   // Image optimization for better performance (important for SEO)
   images: {
@@ -49,4 +53,15 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+/*
+ * Turbopack ne peut pas recevoir de fonctions JS (le bundler est en Rust) :
+ * les plugins remark/rehype se déclarent par leur nom, pas par un import.
+ * remark-gfm active les tableaux markdown, utilisés par les documents légaux.
+ */
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: ['remark-gfm'],
+  },
+});
+
+export default withMDX(nextConfig);

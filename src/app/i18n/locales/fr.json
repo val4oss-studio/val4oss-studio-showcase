@@ -173,7 +173,13 @@
     "brand":     "val4oss studio",
     "tagline":   "Une stack premium pour votre présence en ligne.",
     "legal": {
-        "copyright": "© {year} val4oss studio. Tous droits réservés."
+        "copyright": "© {year} val4oss studio. Tous droits réservés.",
+        "label":     "Informations légales",
+        "links": {
+            "legalNotice": "Mentions légales",
+            "privacy":     "Politique de confidentialité",
+            "terms":       "CGV"
+        }
     }
   }
 }
