@@ -171,6 +171,13 @@
     "ariaLabel": "Site footer",
     "brand":     "val4oss studio",
     "tagline":   "A premium stack for your presence online.",
+    "resources": {
+      "label": "Resources",
+      "links": {
+        "forum":    "Forum",
+        "feedback": "Feedback"
+      }
+    },
     "legal": {
       "copyright": "© {year} val4oss studio. All rights reserved.",
       "label":     "Legal information",

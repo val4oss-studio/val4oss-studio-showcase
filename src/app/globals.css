@@ -2164,8 +2164,9 @@
   .footer-border { top: 0; }
 
   /*
-   * Responsive 3-column grid: brand (wider) + nav + social.
-   * auto-fit collapses to 1 column on small screens — no media query needed.
+   * Responsive 4-column grid: brand + nav + resources + social.
+   * auto-fit reflows down to 1 column on small screens — no media query
+   * needed, and adding a column costs nothing here.
    */
   .footer-grid {
     display: grid;

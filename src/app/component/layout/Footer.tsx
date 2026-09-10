@@ -2,8 +2,9 @@ import Link from 'next/link';
 import type { JSX } from 'react';
 import type { Dictionary } from '@/app/i18n/translations';
 import { LEGAL_DOC_KEYS, legalDocHref } from '@/config/legal';
+import { RESOURCE_KEYS, RESOURCE_URLS } from '@/config/resources';
 import { SECTION_IDS, NAV_SECTION_KEYS } from '@/config/sections';
-import { Icon } from '@/app/component/ui';
+import { Icon, SectionLink } from '@/app/component/ui';
 
 interface FooterProps {
   dictFooter: Dictionary['footer'];
@@ -40,12 +41,35 @@ export function Footer({
             {
               NAV_SECTION_KEYS.map((key) => (
                 <li key={key}>
-                  <Link
+                  <SectionLink
                     href={`/${locale}#${SECTION_IDS[key]}`}
                     className="t-link t-caption"
                   >
                     {dictNav[key]}
-                  </Link>
+                  </SectionLink>
+                </li>
+              ))
+            }
+            </ul>
+          </nav>
+
+          {/* ── Resources column ──
+              Services hébergés sur leurs propres sous-domaines : de vrais
+              liens sortants, jamais `next/link`. */}
+          <nav aria-label={dictFooter.resources.label}>
+            <p className="t-eyebrow">{dictFooter.resources.label}</p>
+            <ul className="footer-links">
+            {
+              RESOURCE_KEYS.map((key) => (
+                <li key={key}>
+                  <a
+                    href={RESOURCE_URLS[key]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="t-link t-caption"
+                  >
+                    {dictFooter.resources.links[key]}
+                  </a>
                 </li>
               ))
             }

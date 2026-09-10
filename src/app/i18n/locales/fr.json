@@ -172,6 +172,13 @@
     "ariaLabel": "Bas de page du site",
     "brand":     "val4oss studio",
     "tagline":   "Une stack premium pour votre présence en ligne.",
+    "resources": {
+        "label": "Ressources",
+        "links": {
+            "forum":    "Forum",
+            "feedback": "Suggestions"
+        }
+    },
     "legal": {
         "copyright": "© {year} val4oss studio. Tous droits réservés.",
         "label":     "Informations légales",

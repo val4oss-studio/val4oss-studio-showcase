@@ -12,7 +12,6 @@
  * (dictionnaire `nav` + SECTION_IDS) : une seule liste de sections à tenir.
  */
 
-import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import type { JSX } from 'react';
@@ -20,6 +19,7 @@ import { SECTION_IDS, NAV_SECTION_KEYS } from '@/config/sections';
 import type { Locale } from '@/config/locale';
 import type { Dictionary } from '@/app/i18n/translations';
 import { LanguageToggle } from '@/app/component/layout/LanguageToggle';
+import { SectionLink } from '@/app/component/ui';
 
 type NavKey = typeof NAV_SECTION_KEYS[number];
 
@@ -74,7 +74,7 @@ export function Navbar({ dictNav, locale }: NavbarProps): JSX.Element {
     `/${locale}#${SECTION_IDS[key]}`;
 
   const homeLink = (className: string): JSX.Element => (
-    <Link
+    <SectionLink
       href={sectionHref('home')}
       className={className}
       aria-label={dictNav.home}
@@ -90,7 +90,7 @@ export function Navbar({ dictNav, locale }: NavbarProps): JSX.Element {
            sans hero (documents légaux) : jamais de chargement différé. */
         loading="eager"
       />
-    </Link>
+    </SectionLink>
   );
 
   return (
@@ -107,9 +107,9 @@ export function Navbar({ dictNav, locale }: NavbarProps): JSX.Element {
             {
               LINK_KEYS.slice(0, SPLIT_INDEX).map((key) => (
                 <li key={key}>
-                  <Link href={sectionHref(key)} className="navbar-link">
+                  <SectionLink href={sectionHref(key)} className="navbar-link">
                     {dictNav[key]}
-                  </Link>
+                  </SectionLink>
                 </li>
               ))
             }
@@ -121,9 +121,9 @@ export function Navbar({ dictNav, locale }: NavbarProps): JSX.Element {
             {
               LINK_KEYS.slice(SPLIT_INDEX).map((key) => (
                 <li key={key}>
-                  <Link href={sectionHref(key)} className="navbar-link">
+                  <SectionLink href={sectionHref(key)} className="navbar-link">
                     {dictNav[key]}
-                  </Link>
+                  </SectionLink>
                 </li>
               ))
             }
@@ -171,13 +171,13 @@ export function Navbar({ dictNav, locale }: NavbarProps): JSX.Element {
             {
               NAV_SECTION_KEYS.map((key) => (
                 <li key={key}>
-                  <Link
+                  <SectionLink
                     href={sectionHref(key)}
                     className="navbar-menu-link"
                     onClick={closeMenu}
                   >
                     {dictNav[key]}
-                  </Link>
+                  </SectionLink>
                 </li>
               ))
             }

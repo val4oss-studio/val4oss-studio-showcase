@@ -7,4 +7,5 @@ export { PlanCarousel } from './PlanCarousel';
 export { PlanFeature } from './PlanFeature';
 export { PlanGroupLabel } from './PlanGroupLabel';
 export { ProjectCard } from './ProjectCard';
+export { SectionLink } from './SectionLink';
 export { SectionTitle } from './SectionTitle';

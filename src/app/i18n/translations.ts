@@ -1,6 +1,7 @@
 import 'server-only';
 import { cache } from 'react';
 import type { LegalDocKey } from '@/config/legal';
+import type { ResourceKey } from '@/config/resources';
 import type { Locale } from '@/config/locale';
 import type { StatusKey, FeatureKey, PlanGroupKey } from '@/config/pricing';
 import type { PillarId } from '@/config/sections'
@@ -87,6 +88,10 @@ export interface Dictionary {
     ariaLabel: string;
     brand: string;
     tagline: string;
+    resources: {
+      label: string;                                // aria + titre de colonne
+      links: Record<ResourceKey, string>;           // keyed by resource key
+    };
     legal: {
       copyright: string;
       label: string;                                // aria — liens légaux
