@@ -1,4 +1,5 @@
 export { AccentCard } from './AccentCard';
+export { Button } from './Button';
 export { Dot } from './Dot';
 export { Icon } from './Icons';
 export { PlanCard } from './PlanCard';

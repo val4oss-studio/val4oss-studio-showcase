@@ -181,5 +181,10 @@
             "terms":       "CGV"
         }
     }
+  },
+  "notFound": {
+      "title": "Page introuvable",
+      "description": "Cette page n'existe pas.",
+      "button": "Accueil"
   }
 }

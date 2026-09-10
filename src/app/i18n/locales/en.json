@@ -180,5 +180,10 @@
         "terms":       "Terms of sale"
       }
     }
+  },
+  "notFound": {
+      "title": "Page not found",
+      "description": "This page doesn't exist.",
+      "button": "Home"
   }
 }

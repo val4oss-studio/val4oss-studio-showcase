@@ -149,6 +149,15 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+/*
+ * Toute locale absente de generateStaticParams est refusée au niveau du
+ * routage, avant tout rendu. Sans cela, un chemin à point (/quelquechose.php,
+ * que les robots sondent en continu) échappe au matcher du proxy, atteint
+ * directement `[locale]/page.tsx` avec une locale invalide, et sort en 500 sur
+ * un dictionnaire introuvable. Avec, il sort en 404 comme il se doit.
+ */
+export const dynamicParams = false;
+
 export default async function LocaleLayout({
   children,
   params,

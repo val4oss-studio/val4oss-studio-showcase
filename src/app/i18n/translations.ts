@@ -93,6 +93,11 @@ export interface Dictionary {
       links: Record<LegalDocKey, string>;           // keyed by legal doc key
     };
   };
+  notFound: {
+    title: string;
+    description: string;
+    button: string;
+  };
 }
 
 const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
