@@ -437,6 +437,9 @@
     flex-direction: column;
     align-items: center;
     height: 5rem;
+    @media (max-width: 59.85rem) {
+      height: 4rem;
+    }
     pointer-events: none;
     overflow: visible;
     z-index: 2;
