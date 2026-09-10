@@ -38,6 +38,7 @@ export function AboutSection({ id, dict }: AboutSectionClientProps): JSX.Element
               return (
                 <AccentCard
                   key={pillar.id}
+                  id={pillar.id}
                   icon={pillar.icon}
                   title={pillarI18n.label}
                   body={pillarI18n.body}

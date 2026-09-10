@@ -766,17 +766,97 @@
   }
 
   /* --- Variante top --- */
+  /* === repli mobile ===
+     Sous 48rem chaque carte devient un disclosure : icône + titre visibles,
+     corps replié. La carte passe de ~260px à ~90px, la section de ~1650px à
+     ~670px, et les six titres restent tous scannables — c'est ce qui a fait
+     préférer ce motif à une bande horizontale.
+
+     La case à cocher est masquée mais reste focalisable (jamais `display:
+     none` sous 48rem), sinon le motif n'est plus atteignable au clavier. */
+
+  /* Desktop : la case n'existe pas — pas de tabulation dans le vide sur six
+     contrôles sans effet. */
+  .accent-card-toggle {
+    display: none;
+  }
+
+  .accent-card-summary {
+    display: contents;   /* desktop : l'enveloppe s'efface, cf. media query */
+  }
+
+  .accent-card-chevron {
+    display: none;
+  }
+
+  @media (max-width: 47.99rem) {
+    /* Masquée mais focalisable : jamais `display: none` ici, sinon le motif
+       devient inatteignable au clavier. */
+    .accent-card-toggle {
+      display: block;
+      position: absolute;
+      width: 1px; height: 1px;
+      opacity: 0;
+      margin: 0;
+      pointer-events: none;
+    }
+
+    .accent-card-summary {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      position: relative;   /* référence du recouvrement tactile ci-dessous */
+    }
+
+    /* Le titre occupe la place laissée par l'icône et le chevron */
+    .accent-card-summary > h3 { flex: 1; min-width: 0; }
+
+    /* `<label>` ne peut pas envelopper le <h3> (contenu de phrasé
+       uniquement) : on étend sa zone tactile à toute la ligne. */
+    .accent-card-summary label {
+      cursor: pointer;
+      &::after { content: ''; position: absolute; inset: 0; }
+    }
+
+    .accent-card-chevron {
+      display: flex;
+      flex-shrink: 0;
+      color: var(--color-gold);
+      transition: rotate var(--transition-duration-base) var(--ease-out);
+    }
+
+    .accent-card-chevron .icon {
+      width:  var(--size-icon-glyph);
+      height: var(--size-icon-glyph);
+    }
+
+    .accent-card-body { display: none; }
+
+    .accent-card-toggle:checked ~ .accent-card-body { display: block; }
+
+    .accent-card-toggle:checked ~ .accent-card-summary .accent-card-chevron {
+      rotate: 180deg;
+    }
+
+    /* La case étant invisible, c'est la ligne qui doit montrer le focus. */
+    .accent-card-toggle:focus-visible ~ .accent-card-summary {
+      outline: 2px solid var(--color-gold);
+      outline-offset: 0.5rem;
+      border-radius: var(--radius-sm);
+    }
+  }
+
   .accent-card--top {
     border-top: 2px solid var(--color-gold-tint-20);
     transition:
       opacity
         700ms
         var(--ease-out-smooth)
-        calc(1000ms + var(--stagger-index, 0) * 150ms),
+        calc(1000ms + var(--stagger-index, 0) * 50ms),
       translate
         700ms
         var(--ease-out-smooth)
-        calc(1000ms + var(--stagger-index, 0) * 150ms),
+        calc(1000ms + var(--stagger-index, 0) * 50ms),
       border-top-color 250ms var(--ease-out)        0ms,
       background       250ms var(--ease-out)        0ms;
   }
