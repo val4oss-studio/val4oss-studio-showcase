@@ -22,8 +22,7 @@ import type { JSX } from 'react';
  * so a seek never has to decode more than a handful of frames.
  */
 const VIDEO_SOURCES = {
-  /*mobile:  '/background_video_mobile.mp4',*/
-  mobile: '/background_video.mp4',
+  mobile:  '/background_video_mobile.mp4',
   desktop: '/background_video.mp4',
 } as const;
 
@@ -100,7 +99,19 @@ export function BackgroundVideo(): JSX.Element | null {
     const tick = (): void => {
       current += (target - current) * SMOOTHING;
 
-      if (video.readyState >= HTMLMediaElement.HAVE_METADATA) {
+      /*
+       * `video.seeking` est la garde décisive sur mobile. Écrire currentTime
+       * demande un seek ; tant que le précédent n'est pas terminé, chaque
+       * écriture supplémentaire s'empile dans une file que le décodeur vide
+       * bien plus lentement qu'une frame. Sur téléphone la file se remplit
+       * pendant tout le défilement inertiel, et l'image ne rattrape son
+       * retard qu'une fois le doigt levé — exactement le symptôme observé.
+       *
+       * En sautant l'écriture, on laisse tomber les frames intermédiaires
+       * plutôt que de les mettre en attente : `current` continue de suivre
+       * `target`, et le prochain seek part de la valeur la plus récente.
+       */
+      if (video.readyState >= HTMLMediaElement.HAVE_METADATA && !video.seeking) {
         video.currentTime = current;
       }
 

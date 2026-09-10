@@ -364,7 +364,20 @@
   /* === section === */
   
   .section {
-    min-height: 100dvh;
+    /*
+     * `svh`, pas `dvh`. `dvh` suit le viewport dynamique : sur téléphone, la
+     * barre d'URL qui se replie au défilement vers le bas et réapparaît au
+     * défilement vers le haut fait varier l'unité de ~60 à 100px. Chaque
+     * section se redimensionne alors en cours de défilement, la hauteur du
+     * document change, et la position de scroll est recalée — d'où les sauts
+     * en remontant dans une section haute comme les tarifs.
+     *
+     * `svh` est figé sur le viewport le plus petit (interface visible) : la
+     * hauteur ne bouge plus, donc plus de recalage. En contrepartie, barre
+     * repliée, un liseré de la section suivante apparaît — préférable à un
+     * saut, et cela signale qu'il y a une suite.
+     */
+    min-height: 100svh;
     display: flex;
     align-items: center;
     justify-content: center;
