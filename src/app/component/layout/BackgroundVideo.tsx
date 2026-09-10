@@ -22,7 +22,8 @@ import type { JSX } from 'react';
  * so a seek never has to decode more than a handful of frames.
  */
 const VIDEO_SOURCES = {
-  mobile:  '/background_video_mobile.mp4',
+  /*mobile:  '/background_video_mobile.mp4',*/
+  mobile: '/background_video.mp4',
   desktop: '/background_video.mp4',
 } as const;
 
