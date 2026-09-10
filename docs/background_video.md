@@ -179,7 +179,11 @@ export function BackgroundVideo(): JSX.Element | null {
     const tick = (): void => {
       current += (target - current) * SMOOTHING;
 
-      if (video.readyState >= HTMLMediaElement.HAVE_METADATA) {
+      /* `!video.seeking` is what keeps this usable on a phone — see
+         Troubleshooting. Writing currentTime while a seek is still in
+         flight queues another one; the queue then drains long after the
+         finger has left the screen. */
+      if (video.readyState >= HTMLMediaElement.HAVE_METADATA && !video.seeking) {
         video.currentTime = current;
       }
 
@@ -249,6 +253,10 @@ export { BackgroundVideo } from './BackgroundVideo';
 
 * **`SMOOTHING` (lerp)** — without it the playhead jumps straight to the
   target and the motion looks mechanical. It eases between scroll events.
+* **The `!video.seeking` guard** — drops intermediate frames instead of
+  queueing seeks the decoder cannot keep up with. This is the single change
+  that separates "smooth on a phone" from "catches up once you stop
+  scrolling".
 * **rAF that stops when settled** — no permanent animation loop draining the
   battery once the user stops scrolling.
 * **Deferred download** — nothing is fetched until `window.load`, so a
@@ -284,6 +292,38 @@ A `position: fixed` layer inside `<body>` is painted **over** by an opaque
 }
 ```
 
+### Full-height sections — `svh`, never `dvh`
+
+The scrub reads `scrollY / (scrollHeight - innerHeight)`. That fraction is
+only meaningful if the document height holds still while the user scrolls —
+and on a phone, `100dvh` guarantees it does not.
+
+`dvh` tracks the *dynamic* viewport. The mobile URL bar retracts on the way
+down and comes back on the way up, moving the unit by 60–100 px. Every
+full-height section resizes mid-scroll, the document height changes, and the
+browser re-anchors the scroll position. Two symptoms, one cause: the page
+visibly jumps when you scroll back up inside a tall section, and the scrub
+target jitters independently of the decoder.
+
+```css
+  .section {
+    min-height: 100svh;   /* not dvh */
+  }
+```
+
+`svh` is pinned to the *small* viewport — browser UI shown — so it never
+changes. The trade is that with the URL bar retracted a sliver of the next
+section shows through; far better than a jump, and it hints at what follows.
+
+Two other units in this recipe are correct as they are, and for different
+reasons:
+
+| selector | unit | why |
+| --- | --- | --- |
+| `.section` | `svh` | contributes to document height — must never change |
+| `.bg-video-layer` | `lvh` | fixed layer; `lvh` avoids a gap when the bar retracts |
+| a full-screen fixed overlay (menu…) | `dvh` | must match what is visible, and cannot move the document |
+
 ### The layer itself
 
 ```css
@@ -302,8 +342,8 @@ A `position: fixed` layer inside `<body>` is painted **over** by an opaque
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(0.5) contrast(1.1) brightness(0.55);
-    opacity: 0.45;
+    filter: grayscale(0.1) contrast(1.1) brightness(0.55);
+    opacity: 0.3;
     mask-image: radial-gradient(
       ellipse 90% 80% at 50% 45%,
       #000 30%,
@@ -391,6 +431,51 @@ shows through them.
 
 ---
 
+## Troubleshooting
+
+### The clip only catches up once the scroll stops
+
+The single most common failure, and it has three causes worth checking in
+this order.
+
+**1. Seeks are being queued.** Assigning `video.currentTime` starts a seek.
+Assign again before that seek completes and the browser queues it. On a phone
+a seek costs more than a frame, so a whole inertial scroll's worth of writes
+piles up and drains only after the finger leaves the screen — which reads
+exactly as "frozen, then snaps to the right frame". Guard the write:
+
+```ts
+if (video.readyState >= HTMLMediaElement.HAVE_METADATA && !video.seeking) {
+  video.currentTime = current;
+}
+```
+
+Dropping intermediate frames is the correct behaviour here. `current` keeps
+easing toward `target` either way, so the next seek always departs from the
+freshest value — frames are lost, sync never is.
+
+**2. The phone is being served the desktop encode.** Check that the mobile
+variant is actually wired in `VIDEO_SOURCES`, not just present in `public/`.
+Four times the pixels per seek, and two and a half times the bytes to buffer
+before seeks stop turning into range requests. Confirm what shipped:
+
+```bash
+ffprobe -v error -select_streams v:0 -show_entries stream=width,height \
+  -of csv=p=0 public/background_video_mobile.mp4   # expect 480,270
+```
+
+**3. The document is resizing under the scroll.** See `svh` above.
+
+### It stays coarse on iOS however small the encode
+
+iOS keeps the decoder cold until the clip has played once, and refuses
+`play()` in Low Power Mode — so `prime()` fails and seeking stays imprecise
+until the first touch. There is no web-side fix; budget for it rather than
+chase it. Always confirm on a real handset: the hardware decoder is precisely
+what devtools emulation does not reproduce.
+
+---
+
 ## Checklist
 
 - [ ] Two encodes in `public/`, nothing else — that folder ships publicly.
@@ -398,6 +483,9 @@ shows through them.
 - [ ] `≤ 15 px` of scroll per frame at the target viewport.
 - [ ] `html` opaque, `body` transparent.
 - [ ] `main` and the footer at `z-index: 1`.
+- [ ] Full-height sections in `svh` — never `dvh`.
+- [ ] `currentTime` written only when `!video.seeking`.
+- [ ] The mobile encode is wired in `VIDEO_SOURCES`, not merely on disk.
 - [ ] Server answers `206 Partial Content` on a `Range` request — Safari
       refuses to play a video otherwise.
 - [ ] Test on a real phone: check heat and battery, not just smoothness.
