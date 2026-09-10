@@ -2,7 +2,6 @@ name: Build & Publish
 
 on:
   push:
-    branches: [main]
     tags: ['[0-9]*']
 
 jobs:
